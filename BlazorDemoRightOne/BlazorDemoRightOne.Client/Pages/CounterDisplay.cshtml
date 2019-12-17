@@ -1,0 +1,22 @@
+﻿@using Microsoft.AspNetCore.Components
+<h1>@Title</h1>
+
+<div class="well well-sm">
+    <p>This is from another page... @Paragraph</p>
+</div>
+<button class="btn btn-primary" onclick="@OhYes">Yes</button>
+
+@functions
+{      
+    [Parameter]
+    private string Paragraph { get; set; }
+
+    [Parameter]
+    private string Title { get; set; }
+
+    void OhYes()
+    {
+        Paragraph = "This is paragraph Content";
+    }
+
+}

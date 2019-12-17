@@ -1,0 +1,81 @@
+﻿@using System
+@using BlazorDemoRightOne.Shared
+@page "/calculator"
+
+<h1>Basic Calculator Demo Using Blazor</h1>
+<hr/>
+<div>
+    <div class="row">
+        <div class="col-sm-3">
+            <p>First Number</p>
+        </div>
+        <div class="col-sm-4">
+            <input placeholder="Enter First Number" bind="@CalculatorValues.Number1"/>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-sm-3">
+            <p>Second Number</p>
+        </div>
+        <div class="col-sm-4">
+            <input placeholder="Enter Second Number" bind="@CalculatorValues.Number2"/>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-sm-3">
+            <p>Result</p>
+        </div>
+        <div class="col-sm-4">
+            <input readonly bind="@CalculatorValues.FinalResult"/>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-sm-2">
+            <button onclick="@AddNumbers" class="btn">Add (+)</button>
+        </div>
+        <div class="col-sm-2">
+            <button onclick="@SubtractNumbers" class="btn btn-primary">Subtract (−)</button>
+        </div>
+        <div class="col-sm-2">
+            <button onclick="@MultiplyNumbers" class="btn btn-success ">Multiply (X)</button>
+        </div>
+        <div class="col-sm-2">
+            <button onclick="@DivideNumbers" class="btn btn-info">Divide (X)</button>
+        </div>
+    </div>
+</div>
+
+@functions
+{
+
+    void AddNumbers()
+    {
+        CalculatorValues.FinalResult = (Convert.ToDouble(CalculatorValues.Number1) + Convert.ToDouble(CalculatorValues.Number2)).ToString();
+    }
+
+    void SubtractNumbers()
+    {
+        CalculatorValues.FinalResult = (Convert.ToDouble(CalculatorValues.Number1) - Convert.ToDouble(CalculatorValues.Number2)).ToString();
+    }
+
+    void MultiplyNumbers()
+    {
+        CalculatorValues.FinalResult = (Convert.ToDouble(CalculatorValues.Number1) * Convert.ToDouble(CalculatorValues.Number2)).ToString();
+    }
+
+    void DivideNumbers()
+    {
+        if(Convert.ToDouble(CalculatorValues.Number2) != 0)
+        {
+            CalculatorValues.FinalResult = (Convert.ToDouble(CalculatorValues.Number1) / Convert.ToDouble(CalculatorValues.Number2)).ToString();
+        }
+        else
+        {
+            CalculatorValues.FinalResult = "Cannot Divide by Zero";
+        }
+    }
+
+}
