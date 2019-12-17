@@ -1,0 +1,26 @@
+﻿@page "/TableTemplate"
+@using System.Data
+@using BlazorAppDynamicTemplate.DynamicTemplate
+<h1>Dynamic Template</h1>
+
+<button class="btn btn-primary" @onclick="GenerateTable">Click To Generate Table</button>
+        <br/>
+        <br/>
+
+        @DynamicTemplate
+
+        @code {
+            private DataTable tabEmployee;
+            private RenderFragment DynamicTemplate { get; set; }
+
+            void GenerateTable()
+            {
+                DynamicTemplate = DynamicTableTemplate.BuildTable(tabEmployee);
+            }
+
+            protected override void OnInitialized()
+            {
+                tabEmployee = DBProcess.FetchAllEmployeeDetails();
+            }
+
+        }

@@ -1,0 +1,63 @@
+﻿@page "/createemployee1"
+@inject NavigationManager navigationManager
+<h3>Create Employee</h3>
+<hr />
+
+<EditForm Model="@employee">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group">
+                <label for="Name" class="custom-control-label">Name</label>
+                <InputText id="Name" class="form-control" @bind-Value="@employee.EmployeeName" />
+            </div>
+            <div class="form-group">
+                <label for="Department" class="custom-control-label">Department</label>
+                <InputText id="Name" class="form-control" @bind-Value="@employee.Department" />
+            </div>
+            <div class="form-group">
+                <label for="Salary" class="custom-control-label">Salary</label>
+                <InputNumber id="salary" class="form-control" @bind-Value="@employee.Salary" />
+            </div>
+            <div class="form-group">
+                <label for="DOB" class="custom-control-label">Date Of Birth</label>
+                <InputDate id="dob" class="form-control" @bind-Value="@employee.DOB" />
+            </div>
+            <div class="form-group">
+                <label for="DOB" class="custom-control-label">City</label>
+                <InputSelect id="city" class="form-control" @bind-Value="@employee.City">
+                    <option value="">--Select City--</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Madurai">Madurai</option>
+                    <option value="Coimbatore">Coimbatore</option>
+                </InputSelect>
+            </div>
+            <div class="custom-checkbox">
+                <label class="custom-control-label">Is Plan Selected</label>
+                <input type="checkbox" value="" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group">
+                <input type="button" class="btn btn-primary" @onclick="@CreateNewEmployee" value="Save" />
+                <input type="button" class="btn" @onclick="@Cancel" value="Cancel" />
+            </div>
+        </div>
+    </div>
+</EditForm>
+
+@code {
+    readonly EmployeeInformation employee = new EmployeeInformation();
+
+    void CreateNewEmployee()
+    {
+        EmployeeCURD.CreateEmployee(employee);
+        navigationManager.NavigateTo("listemployees");
+    }
+    void Cancel()
+    {
+        navigationManager.NavigateTo("listemployees");
+    }
+
+}
