@@ -1,0 +1,18 @@
+﻿@page "/oninitialized"
+
+<h1>@Title</h1>
+<h3>Life Cycle Method OnInitialized</h3>
+
+<p>I was rendered at @TimeRendered</p>
+
+@code {
+    private string Title { get; set; }
+    private DateTime TimeRendered { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Title = "On Initialized Method";
+        TimeRendered = DateTime.Now;
+    }
+
+}

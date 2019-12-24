@@ -1,0 +1,17 @@
+﻿@page "/counter"
+
+<h4>Increment Counter</h4>
+
+<!-- Child Component -->
+<DisplayValue Counter=@CounterValue />
+
+<button class="btn btn-primary" @onclick="@IncrementCount">Click me</button>
+
+@code {
+    private int CounterValue = 0;
+
+    private void IncrementCount()
+    {
+        CounterValue = CounterValue += 2;
+    }
+}

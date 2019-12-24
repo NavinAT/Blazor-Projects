@@ -1,0 +1,20 @@
+﻿
+<p>@strCounterCount</p>
+
+@code {
+
+    [Parameter] public int Counter { get; set; }
+
+    private string strCounterCount;
+
+    protected override void OnInitialized()
+    {
+        strCounterCount = string.Empty;
+    }
+
+    protected override void OnParametersSet()
+    {
+        strCounterCount = Counter.ToString() + " and counting...";
+    }
+
+}
