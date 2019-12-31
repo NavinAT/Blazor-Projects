@@ -1,0 +1,18 @@
+﻿@page "/afterrender"
+@inject IJSRuntime JSRuntime
+
+<h4 id="MyHeader">JavaScript Invoke In AfterRender Method</h4>
+
+<p id="MyParagraph"></p>
+
+@code {
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if(firstRender)
+        {
+            JSRuntime.InvokeVoidAsync("ShowAlert");
+        }
+    }
+
+}

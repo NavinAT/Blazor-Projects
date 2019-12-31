@@ -43,4 +43,10 @@ else
     {
         forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
     }
+
+    protected override bool ShouldRender()
+    {
+        return true;
+    }
+
 }
