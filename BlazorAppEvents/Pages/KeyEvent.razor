@@ -1,0 +1,22 @@
+﻿@page "/keyevent"
+
+<h3>Key Event</h3>
+
+<input @onkeypress="LogKeyPressed">
+
+<ul>
+    @foreach(string strKey in lstKeyLog)
+    {
+        <li>@strKey</li>
+    }
+</ul>
+
+@code {
+    private List<string> lstKeyLog { get; } = new List<string>();
+
+    void LogKeyPressed(KeyboardEventArgs eventArgs)
+    {
+        lstKeyLog.Add(eventArgs.Key);
+    }
+
+}
