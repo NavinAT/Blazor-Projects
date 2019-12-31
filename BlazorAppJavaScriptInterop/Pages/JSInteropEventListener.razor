@@ -1,0 +1,22 @@
+﻿@page "/jsevent"
+@using Microsoft.JSInterop            
+@inject IJSRuntime JSRuntime
+
+<h3>JS Interop EventListener</h3>
+
+<h4>Invoke JavaScript to add Event Listener</h4>
+<hr/>
+<button id="AlertButton" type="button" class="btn btn-primary">Click button to show alert from script</button>
+<br />
+<br />
+<h5 @ref="RefHeader">Mouse over to change the color of header</h5>
+
+@code {
+    private ElementReference RefHeader;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if(!firstRender) return;
+        JSRuntime.InvokeVoidAsync("RegisterEvent", RefHeader);
+    }
+}

@@ -1,0 +1,19 @@
+﻿@page "/jsinterop"
+@inject IJSRuntime JsRuntime 
+
+<h3>JavaScript Interop</h3>
+
+<h4>Invoke JavaScript function from .NET methods</h4><br/>
+
+<button type="button" class="btn btn-primary" @onclick="LanuchJSPrompt">Launch JS Prompt</button>
+<hr/>
+<h3 id="welcome" style="color: aqua;font-style: italic"></h3>   
+
+@code {
+    private async Task LanuchJSPrompt()
+    {
+        var name = await JsRuntime.InvokeAsync<string>("ShowPrompt", "What's your name ?");
+
+        await JsRuntime.InvokeVoidAsync("DisplayWelcome", $"Hello {name}! Welcome to JSInterop Demo");
+    }
+}

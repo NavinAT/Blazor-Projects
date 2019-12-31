@@ -1,0 +1,21 @@
+﻿@page "/jscreatehtml"
+@inject IJSRuntime JSRuntime
+
+<h3>JS Interop</h3>
+<h4>Invoke JavaScript to create HTML Element</h4>
+<br/>
+
+<button type="button" class="btn btn-primary" @onclick= "CreateHTMLElement">Click to create element</button>
+<hr/>
+<div id="DivContainer">
+
+</div>
+
+@code {
+
+    private async Task CreateHTMLElement()
+    {
+        await JSRuntime.InvokeVoidAsync("CreateDynamicHTMLElement");
+    }
+
+}
