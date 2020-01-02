@@ -58,6 +58,7 @@ namespace BlazorAppDynamicCompBasedonDataSet
 			return DynamicFragment;
 		}
 
+		//Haven't used yet
 		public static RenderFragment RenderTextBox(DataTable tabAnonymousTable,string strFiieldName, string strStyleClass, string strLabelText, string strID)
 		{
 			RenderFragment DynamicTextBox = null;
