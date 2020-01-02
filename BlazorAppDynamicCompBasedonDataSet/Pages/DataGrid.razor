@@ -1,0 +1,33 @@
+﻿@using System.Data
+@using BlazorAppDynamicTemplate.DynamicTemplate
+<h4>@Title</h4>
+
+@if(DynamicRenderFragment == null)
+{
+    <div class="alert alert-warning">
+        <strong>Warning!</strong> No Dynamic UI Content found.
+    </div>
+}
+
+else
+{
+    @DynamicRenderFragment
+}
+
+@code {
+
+    [Parameter]
+    public string DataMember { get; set; }
+
+    [Parameter]
+    public string Title { get; set; }
+
+    public RenderFragment DynamicRenderFragment { get; set; }
+
+    protected override void OnInitialized()
+    {
+        DataTable tabAnonymous = TableInformation.GetTableColumn(DataMember);
+        DynamicRenderFragment = DynamicTableTemplate.BuildTable(tabAnonymous);
+    }
+
+}

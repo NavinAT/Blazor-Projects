@@ -1,0 +1,10 @@
+﻿
+<DataGrid DataMember="@DataMember" Title=" List Insurance"></DataGrid>
+@code {
+
+    [CascadingParameter]
+    public string DataMember { get; set; }
+
+    [Parameter]
+    public string Title { get; set; }
+}
