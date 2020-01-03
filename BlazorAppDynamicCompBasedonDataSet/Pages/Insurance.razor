@@ -1,7 +1,13 @@
 ﻿@page "/insurance"
 @using System.Security.Policy
 
-<GroupBox DataMember="@DataMember" Title="Insurance"></GroupBox>
+    <GroupBox DataMember="@DataMember" Title="Insurance">
+
+        @*<Field column="@DataMember.Name" controlType="1" />
+        <Field column="@DataMember.City" controlType="3" LDS="CODE={"city"}"/>
+        <Field column="@DataMember.Perform" controlType="3" LDS="CODE={"Perfor"}" />*@
+
+    </GroupBox>
 
 @code {
     [CascadingParameter]

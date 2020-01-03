@@ -1,0 +1,21 @@
+﻿
+<label>@LabelText</label>
+
+<select id="@Id">
+    @foreach (string strOption in Options)
+    {
+        <option value="@strOption">@strOption</option>
+    }
+</select>
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+
+    [Parameter]
+    public string LabelText { get; set; }
+
+    [Parameter]
+    public string[] Options { get; set; }
+
+}

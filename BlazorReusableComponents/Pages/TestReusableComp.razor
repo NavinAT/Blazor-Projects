@@ -1,0 +1,29 @@
+﻿@page "/"
+@using BlazorReusableComponents.Reusable_Components
+
+<TextBox Id="MyTextbox" Label="Test TextBox"></TextBox>
+<br />
+<hr />
+<DropDownList Id="MyDropDown" Options="@options" LabelText="Digits"></DropDownList>
+<br />
+<hr />
+<RadioButton Name="gender" Value="Male" DisplayContent="Male"></RadioButton><br>
+<RadioButton Name="gender" Value="Female" DisplayContent="Female"></RadioButton><br>
+<RadioButton Name="gender" Value="Others" DisplayContent="Others"></RadioButton><br>
+
+<input type="radio" name="gender" value="Male">Male
+
+
+
+@code
+{
+    readonly string[] options =
+    {
+        "",
+        "One",
+        "Two",
+        "Three",
+        "Four"
+    };
+
+}

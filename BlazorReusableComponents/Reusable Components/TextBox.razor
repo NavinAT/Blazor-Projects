@@ -1,0 +1,28 @@
+﻿@DynamicTextBox
+
+@code {
+    private RenderFragment DynamicTextBox { get; set; }
+
+    [Parameter]
+    public string Id { get; set; }
+
+    [Parameter]
+    public string Label { get; set; }
+
+    [Parameter]
+    public string StyleClass { get; set; }
+
+    protected override void OnInitialized()
+    {
+        DynamicTextBox = textboxBuilder =>
+        {
+            textboxBuilder.AddMarkupContent(0, $"<label>{Label}</label>");
+            textboxBuilder.OpenElement(1, "input");
+            textboxBuilder.AddAttribute(2, "id", Id);
+            textboxBuilder.AddAttribute(3, "type", "text");
+            textboxBuilder.CloseElement();
+
+        };
+    }
+
+}
