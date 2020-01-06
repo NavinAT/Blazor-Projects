@@ -1,0 +1,16 @@
+﻿@page "/"
+
+<h3>Sample</h3>
+
+<input type="text" @bind="_edins.Abbreviation" />
+<input type="number" @bind="_edins.InsSubNr" />
+<select @bind="_edins.InsuranceType">
+    <option value=""></option>
+    <option value="FP">First Pillar</option>
+    <option value="SP">Second Pillar</option>
+</select>
+
+@code {
+    EDINS _edins = new EDINS();
+
+}

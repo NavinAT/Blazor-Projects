@@ -1,0 +1,37 @@
+﻿@*@foreach(RenderFragment renderFragment in DynamicControlFragment)
+{
+    <div>
+        @renderFragment
+    </div>
+}*@
+<div>
+    @DynamicControlFragment
+</div>
+
+@code {
+
+    [Parameter]
+    public string ControlType { get; set; }
+
+    [Parameter]
+    public string LabelText { get; set; }
+
+    [Parameter]
+    public string BindingField { get; set; }
+
+    [Parameter]
+    public object Bind{ get; set; }
+
+    [Parameter]
+    public string Code { get; set; }
+
+    //public List<RenderFragment> DynamicControlFragment { get; set; }
+    public RenderFragment DynamicControlFragment { get; set; }
+
+    protected override void OnInitialized()
+    {
+        DynamicControlFragment = RenderDynamicControl.RenderFormControls(ControlType, LabelText, Bind/*, BindingField*/);
+    }
+
+}
+

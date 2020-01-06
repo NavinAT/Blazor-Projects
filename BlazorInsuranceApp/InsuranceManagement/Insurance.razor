@@ -1,0 +1,27 @@
+﻿@page "/insurance"
+@using System.Data
+
+<h3>Insurance</h3>
+
+
+<Field ControlType="TBNumber" LabelText="Insurance" Bind="@_edins.InsSubNr"></Field>
+<Field ControlType="TBText" LabelText="Abbreviation" Bind="@_edins.Abbreviation"></Field>
+
+@code {
+
+    readonly EDINS _edins = new EDINS();
+    private DataTable tabEDINS;
+
+    protected override void OnInitialized()
+    {
+        tabEDINS = TableData.GetInsurance(typeof(EDINS).Name);
+
+        foreach(DataRow row in tabEDINS.Rows)
+        {
+            _edins.InsSubNr = Convert.ToInt32(row["InsSubNr"]);
+            _edins.Abbreviation = row["Abbreviation"].ToString();
+        }
+    }
+
+
+}

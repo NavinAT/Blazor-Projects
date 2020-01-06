@@ -1,0 +1,17 @@
+﻿@page "/parent"
+
+<h3>Parent Component</h3>
+
+<p> Parent Component and click the below button to view the child component </p>
+
+<ChildContent @ref="_childContent"/>
+
+@code {
+    private ChildContent _childContent;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        _childContent.Show();
+    }
+
+}

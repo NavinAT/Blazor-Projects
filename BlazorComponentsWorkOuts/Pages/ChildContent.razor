@@ -1,0 +1,19 @@
+﻿@DynamicChildContent
+
+@code {
+
+    public RenderFragment DynamicChildContent { get; set; }
+
+    public void Show()
+    {
+        DynamicChildContent = renderTreeBuilder =>
+                              {
+                                  renderTreeBuilder.AddMarkupContent(0, "<h3>Child Content</h3>");
+                                  renderTreeBuilder.OpenElement(1, "div");
+                                  renderTreeBuilder.AddAttribute(2, "class", "main");
+                                  renderTreeBuilder.AddMarkupContent(3, "<p>This is paragraph from Child content</p>");
+                                  renderTreeBuilder.CloseElement();
+                              };
+    }
+
+}
