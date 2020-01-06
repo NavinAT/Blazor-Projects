@@ -1,0 +1,30 @@
+﻿@inject IJSRuntime JsRuntime
+@page "/callingcsmethod"
+
+<h3>Invoke C# Method from JS file</h3>
+<button id="AlertButton" type="button" class="btn btn-primary" @onclick="@CallCSMethod">Click button to show alert from script</button>
+<br />
+<hr />
+
+@if(!string.IsNullOrEmpty(Message))
+{
+    <div class="alert alert-success" role="alert">
+        @Message
+    </div>
+}
+
+@code {
+    public static string Message { get; set; }
+
+    private void CallCSMethod()
+    {
+        JsRuntime.InvokeVoidAsync("CSMethod");
+    }
+
+    [JSInvokable]
+    public static void CSCallBackMethod()
+    {
+        Message = "C# Method Invoked from JS Method";
+    }
+
+}
