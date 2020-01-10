@@ -1,8 +1,9 @@
-﻿@page "/editemployee/{EmployeeId}"
+﻿
 @inject NavigationManager navigationManager
 
-<h3>Edit Employee</h3>
+<h4>Edit Employee</h4>
 <hr />
+@page "/editemployee/{EmployeeId}"
 @if (employee == null)
 {
     <div class="alert alert-warning">
@@ -16,33 +17,30 @@ else
         <div class="row">
             <div class="col-md-8">
                 <div class="form-group">
-                    <label for="Name" class="custom-control-label">Name</label>
+                    <label for="Name">Name</label>
                     <input id="Name" class="form-control" placeholder="Enter your Name" @bind="@employee.EmployeeName" />
                 </div>
                 <div class="form-group">
-                    <label for="Department" class="custom-control-label">Department</label>
+                    <label for="Department">Department</label>
                     <input id="Department" class="form-control" placeholder="Enter your Department" @bind="@employee.Department" />
                 </div>
                 <div class="form-group">
-                    <label for="Salary" class="custom-control-label">Salary</label>
+                    <label for="Salary">Salary</label>
                     <input id="Salary" class="form-control" placeholder="Enter your salary" @bind="@employee.Salary" />
                 </div>
                 <div class="form-group">
-                    <label for="DOB" class="custom-control-label">Date Of Birth</label>
+                    <label for="DOB">Date Of Birth</label>
                     <input id="DOB" class="form-control" placeholder="Enter your DOB" @bind="@employee.DOB" @bind:format="dd/MM/yyyy" />
                 </div>
                 <div class="form-group">
-                    <label for="DOB" class="custom-control-label">City</label>
-                    <select class="form-control" @bind="@employee.City">
+                    <label for="City">City</label>
+                    <select id="City" class="form-control" @bind="@employee.City">
                         <option value="">--Select City--</option>
-                        <option value="Chennai">Chennai</option>
-                        <option value="Madurai">Madurai</option>
-                        <option value="Coimbatore">Coimbatore</option>
+                        @foreach (string strOption in DropDownValues)
+                        {
+                            <option value="@strOption">@strOption</option>
+                        }
                     </select>
-                </div>
-                <div class="custom-checkbox">
-                    <label class="custom-control-label">Is Plan Selected</label>
-                    <input type="checkbox" value="" />
                 </div>
             </div>
         </div>
@@ -63,9 +61,14 @@ else
 
     EmployeeInformation employee = new EmployeeInformation();
 
+    List<string> DropDownValues;
+    
     protected override void OnInitialized()
     {
         employee = EmployeeCRUD.FetchSingleEmployee(EmployeeId);
+
+        string strTableName = nameof(employee.City);
+        DropDownValues = EmployeeCRUD.FetchDropDownList(strTableName);
     }
 
     private void UpdateEmployee()

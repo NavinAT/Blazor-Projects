@@ -1,34 +1,35 @@
-﻿@page "/createemployee"
-@inject NavigationManager navigationManager
-<h3>Create Employee</h3>
+﻿@inject NavigationManager navigationManager
+
+<h4>Create New Employee Record</h4>
 <hr />
 
 <form>
     <div class="row">
         <div class="col-md-8">
             <div class="form-group">
-                <label for="Name" class="custom-control-label">Name</label>
+                <label for="Name">Name</label>
                 <input id="Name" class="form-control" @bind="@employee.EmployeeName" />
             </div>
             <div class="form-group">
-                <label for="Department" class="custom-control-label">Department</label>
+                <label for="Department">Department</label>
                 <input id="Department" class="form-control" @bind="@employee.Department" />
             </div>
             <div class="form-group">
-                <label for="Salary" class="custom-control-label">Salary</label>
+                <label for="Salary">Salary</label>
                 <input id="Salary" class="form-control" @bind="@employee.Salary" />
             </div>
             <div class="form-group">
-                <label for="DOB" class="custom-control-label">Date Of Birth</label>
+                <label for="DOB">Date Of Birth</label>
                 <input id="DOB" class="form-control" @bind="@employee.DOB" @bind:format="dd/MM/yyyy" />
             </div>
             <div class="form-group">
-                <label for="DOB" class="custom-control-label">City</label>
-                <select class="form-control" @bind="@employee.City">
+                <label for="City">City</label>
+                <select id="City" class="form-control" @bind="@employee.City">
                     <option value="">--Select City</option>
-                    <option value="Chennai">Chennai</option>
-                    <option value="Madurai">Madurai</option>
-                    <option value="Coimbatore">Coimbatore</option>
+                    @foreach(string strOption in DropDownValues)
+                    {
+                        <option value="@strOption">@strOption</option>
+                    }
                 </select>
             </div>
         </div>
@@ -45,6 +46,14 @@
 
 @code {
     readonly EmployeeInformation employee = new EmployeeInformation();
+    List<string> DropDownValues;
+
+    protected override void OnInitialized()
+    {
+        const string strTableName = nameof(employee.City);
+
+        DropDownValues = EmployeeCRUD.FetchDropDownList(strTableName);
+    }
 
     void CreateNewEmployee()
     {
@@ -57,3 +66,4 @@
         navigationManager.NavigateTo("listemployees");
     }
 }
+@page "/createemployee"

@@ -1,5 +1,5 @@
 ﻿@page "/listemployees"
-<h2>List Employees</h2>
+<h4>List Employees</h4>
 
 <p>
     <a href="/createemployee">Create New Employee</a>
@@ -23,20 +23,20 @@ else
         </tr>
         </thead>
         <tbody>
-        @foreach(EmployeeInformation employee in lstEmployees)
-        {
-            <tr>
-                <td>@employee.EmployeeName</td>
-                <td>@employee.Department</td>
-                <td>@employee.Salary</td>
-                <td>@employee.DOB</td>
-                <td>@employee.City</td>
-                <td>
-                    <a href="/editemployee/@employee.EmployeeId">Edit</a>
-                    <a href="/deleteemployee/@employee.EmployeeId">Delete</a>
-                </td>
-            </tr>
-        }
+            @foreach(EmployeeInformation employee in lstEmployees)
+            {
+                <tr>
+                    <td>@employee.EmployeeName</td>
+                    <td>@employee.Department</td>
+                    <td>@employee.Salary</td>
+                    <td>@employee.DOB</td>
+                    <td>@employee.City</td>
+                    <td>
+                        <a href="/editemployee/@employee.EmployeeId">Edit</a>
+                        <a href="/deleteemployee/@employee.EmployeeId">Delete</a>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 }

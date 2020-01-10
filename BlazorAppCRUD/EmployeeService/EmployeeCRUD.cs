@@ -66,7 +66,7 @@ namespace BlazorAppCRUD
 		{
 			EmployeeInformation employee = null;
 			using SqlConnection con = new SqlConnection(CONNECTION_STRING);
-			string strQuery = "Select * from Employee where EmployeeId = @EmployeeId";
+			const string strQuery = "Select * from Employee where EmployeeId = @EmployeeId";
 
 			sqlCommand = new SqlCommand(strQuery, con);
 			sqlCommand.Parameters.AddWithValue("@EmployeeId", strEmployeeId);
@@ -92,10 +92,11 @@ namespace BlazorAppCRUD
 		public static void EditEmployee(string strEmployeeId, EmployeeInformation employee)
 		{
 			using SqlConnection con = new SqlConnection(CONNECTION_STRING);
-			string strUpdateQuery = "Update Employee set EmployeeName = @EmployeeName, Department = @Department, salary = @salary, DOB = @DOB, City = @City where EmployeeId = @EmployeeId";
+			const string strUpdateQuery = "Update Employee set EmployeeName = @EmployeeName, Department = @Department, salary = @salary, DOB = @DOB, City = @City where EmployeeId = @EmployeeId";
 
 			sqlCommand = new SqlCommand(strUpdateQuery, con);
 			sqlCommand.Parameters.AddWithValue("@EmployeeId", strEmployeeId);
+			sqlCommand.Parameters.AddWithValue("@EmployeeName", employee.EmployeeName);
 			sqlCommand.Parameters.AddWithValue("@Department", employee.Department);
 			sqlCommand.Parameters.AddWithValue("@salary", employee.Salary);
 			sqlCommand.Parameters.AddWithValue("@DOB", employee.DOB);
@@ -113,6 +114,27 @@ namespace BlazorAppCRUD
 			sqlCommand.Parameters.AddWithValue("@EmployeeId", strEmployeeId);
 
 			OpenAndCloseConnection(con, sqlCommand);
+		}
+
+		public static List<string> FetchDropDownList(string strTableName)
+		{
+			List<string> DropDownValues = new List<string>();
+
+			using SqlConnection connection = new SqlConnection(CONNECTION_STRING);
+			string strQuery = $"Select * from {strTableName}";
+			sqlCommand = new SqlCommand(strQuery, connection);
+
+			connection.Open();
+			SqlDataReader dataReader = sqlCommand.ExecuteReader();
+
+			while(dataReader.Read())
+			{
+				string strListvalue = dataReader["CityName"].ToString();
+
+				DropDownValues.Add(strListvalue);
+			}
+
+			return DropDownValues;
 		}
 		#endregion
 
