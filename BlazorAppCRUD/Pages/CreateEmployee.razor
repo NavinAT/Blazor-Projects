@@ -1,4 +1,5 @@
-﻿@inject NavigationManager navigationManager
+﻿@page "/createemployee"
+@inherits CreateEmployeeBase
 
 <h4>Create New Employee Record</h4>
 <hr />
@@ -26,7 +27,7 @@
                 <label for="City">City</label>
                 <select id="City" class="form-control" @bind="@employee.City">
                     <option value="">--Select City</option>
-                    @foreach(string strOption in DropDownValues)
+                    @foreach (string strOption in DropDownValues)
                     {
                         <option value="@strOption">@strOption</option>
                     }
@@ -43,27 +44,3 @@
         </div>
     </div>
 </form>
-
-@code {
-    readonly EmployeeInformation employee = new EmployeeInformation();
-    List<string> DropDownValues;
-
-    protected override void OnInitialized()
-    {
-        const string strTableName = nameof(employee.City);
-
-        DropDownValues = EmployeeCRUD.FetchDropDownList(strTableName);
-    }
-
-    void CreateNewEmployee()
-    {
-        EmployeeCRUD.CreateEmployee(employee);
-        navigationManager.NavigateTo("listemployees");
-    }
-
-    void Cancel()
-    {
-        navigationManager.NavigateTo("listemployees");
-    }
-}
-@page "/createemployee"

@@ -1,9 +1,9 @@
-﻿
-@inject NavigationManager navigationManager
+﻿@page "/editemployee/{EmployeeId}"
+@inherits EditEmployeeBase
 
 <h4>Edit Employee</h4>
 <hr />
-@page "/editemployee/{EmployeeId}"
+
 @if (employee == null)
 {
     <div class="alert alert-warning">
@@ -47,7 +47,7 @@ else
         <div class="row">
             <div class="col-md-8">
                 <div class="form-group">
-                    <input type="button" class="btn btn-primary" @onclick="@UpdateEmployee" value="Save" />
+                    <input type="button" class="btn btn-primary" @onclick="@UpdateEmployee" value="Save"/>
                     <input type="button" class="btn" @onclick="@Cancel" value="Cancel" />
                 </div>
             </div>
@@ -55,30 +55,3 @@ else
     </form>
 }
 
-@code {
-    [Parameter]
-    public string EmployeeId { get; set; }
-
-    EmployeeInformation employee = new EmployeeInformation();
-
-    List<string> DropDownValues;
-    
-    protected override void OnInitialized()
-    {
-        employee = EmployeeCRUD.FetchSingleEmployee(EmployeeId);
-
-        string strTableName = nameof(employee.City);
-        DropDownValues = EmployeeCRUD.FetchDropDownList(strTableName);
-    }
-
-    private void UpdateEmployee()
-    {
-        EmployeeCRUD.EditEmployee(EmployeeId, employee);
-        navigationManager.NavigateTo("listemployees");
-    }
-
-    private void Cancel()
-    {
-        navigationManager.NavigateTo("listemployees");
-    }
-}

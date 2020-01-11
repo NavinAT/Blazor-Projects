@@ -1,4 +1,5 @@
 ﻿@page "/listemployees"
+@inherits ListEmployeeBase
 <h4>List Employees</h4>
 
 <p>
@@ -39,13 +40,4 @@ else
             }
         </tbody>
     </table>
-}
-
-@code {
-    List<EmployeeInformation> lstEmployees;
-
-    protected override void OnInitialized()
-    {
-        lstEmployees = EmployeeCRUD.FetchEmployees();
-    }
 }
