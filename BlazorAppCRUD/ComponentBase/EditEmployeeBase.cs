@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 
 namespace BlazorAppCRUD
 {
@@ -16,6 +17,9 @@ namespace BlazorAppCRUD
 
 		[Inject]
 		protected NavigationManager NavigationManager { get; set; }
+
+		[Inject]
+		protected IJSRuntime JSRuntime { get; set; }
 		#endregion
 
 		#region Protecteds
@@ -25,6 +29,12 @@ namespace BlazorAppCRUD
 
 			string strTableName = nameof(employee.City);
 			DropDownValues = EmployeeCRUD.FetchDropDownList(strTableName);
+		}
+
+		protected override async void OnAfterRender(bool firstRender)
+		{
+			await this.JSRuntime.InvokeVoidAsync("addDatePicker");
+			base.OnAfterRender(firstRender);
 		}
 
 		protected void UpdateEmployee()

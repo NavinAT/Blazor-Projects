@@ -1,7 +1,7 @@
 ﻿@page "/insurance"
 @using System.Security.Policy
 
-    <GroupBox DataMember="@DataMember" Title="Insurance">
+    <GroupBox DataMember="@DataMember" >
 
         @*<Field column="@DataMember.Name" controlType="1" />
         <Field column="@DataMember.City" controlType="3" LDS="CODE={"city"}"/>
@@ -12,4 +12,9 @@
 @code {
     [CascadingParameter]
     public string DataMember { get; set; }
+
+    protected override void OnInitialized()
+    {
+        
+    }
 }
