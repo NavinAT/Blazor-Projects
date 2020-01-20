@@ -1,27 +1,62 @@
 ﻿@page "/insurance"
 @using System.Data
+@using BlazorInsuranceApp.InsuranceManagement
 
 <h3>Insurance</h3>
 
 
-<Field ControlType="TBNumber" LabelText="Insurance" Bind="@_edins.InsSubNr"></Field>
-<Field ControlType="TBText" LabelText="Abbreviation" Bind="@_edins.Abbreviation"></Field>
+@*<Field ControlType="TBText" LabelText="Caption" Bind="@_edins.Caption" Obj=@_edins></Field>
+    <Field ControlType="TBText" LabelText="ShortCaption" Bind="@_edins.ShortCaption" Obj=@_edins></Field>*@
+
+@*<MyField ControlType="TBNumber" LabelText="InsSubNr" Bind="@_edins.InsSubNr" Obj=@_edins></MyField>
+    <MyField ControlType="TBText" LabelText="Caption" Bind="@_edins.Caption" Obj=@_edins></MyField>
+    <MyField ControlType="TBText" LabelText="ShortCaption" Bind="@_edins.ShortCaption" Obj=@_edins></MyField>*@
+
+@*@foreach(DataRow row in tabEDINS?.Rows)
+    {
+
+    }
+
+    @code {
+
+        readonly EDINS _edins = new EDINS();
+        private DataTable tabEDINS;
+
+        protected override void OnInitialized()
+        {
+            tabEDINS = TableData.GetInsurance(typeof(EDINS).Name);
+
+            foreach(DataRow row in tabEDINS.Rows)
+            {
+                _edins.Caption = row["Caption"].ToString();
+                _edins.ShortCaption = row["ShortCaption"].ToString();
+            }
+        }
+    }*@
+
+
+<MyField ControlType="TBText" LabelText="Caption" Bind="@rowEDINS["Caption"]" Obj=@rowEDINS></MyField>
+<MyField ControlType="TBNumber" LabelText="ShortCaption" Bind="@rowEDINS["InsSubNr"]" Obj=@rowEDINS></MyField>
+<br/>
+
+<button @onclick="CheckChanges">Check changes</button>
+
 
 @code {
 
-    readonly EDINS _edins = new EDINS();
     private DataTable tabEDINS;
+    private DataRow rowEDINS;
 
     protected override void OnInitialized()
     {
         tabEDINS = TableData.GetInsurance(typeof(EDINS).Name);
 
-        foreach(DataRow row in tabEDINS.Rows)
-        {
-            _edins.InsSubNr = Convert.ToInt32(row["InsSubNr"]);
-            _edins.Abbreviation = row["Abbreviation"].ToString();
-        }
+        rowEDINS = tabEDINS.Select().FirstOrDefault();
     }
 
-
+    private void CheckChanges()
+    {
+        DataTable tabNewData = tabEDINS;
+        
+    }
 }
