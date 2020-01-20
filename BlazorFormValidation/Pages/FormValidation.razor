@@ -1,0 +1,43 @@
+﻿@page "/formvalidation"
+
+<h4>Form Validation</h4>
+
+<EditForm Model="@edInsurance" OnInvalidSubmit="@ValidateAndSubmit">
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
+
+    <div>
+        <label for="InsuranceName">Insurance Name</label>
+        <InputText id="InsuranceName" @bind-Value="@edInsurance.InsuranceName"/>
+    </div>
+    <div>
+        <label for="Caption">Caption</label>
+        <InputText id="Caption" @bind-Value="@edInsurance.Caption"/>
+    </div>
+    <div>
+        <label for="DOB">Caption</label>
+        <InputDate id="DOB" @bind-Value="@edInsurance.DOB"/>
+    </div>
+    <div>
+        <label for="IsEmployeeExists">Caption</label>
+        <InputCheckbox id="IsEmployeeExists" @bind-Value="@edInsurance.IsEmployeeExists"/>
+    </div>
+    <div>
+        <label for="Code">Code</label>
+        <InputNumber id="Code" @bind-Value="@edInsurance.Code" />
+    </div>
+
+    <input type="submit" class="btn btn-primary" />
+</EditForm>
+
+<FormField @bind-Value="@edInsurance"></FormField>
+
+@code {
+    private EDInsurance edInsurance = new EDInsurance();
+
+    private void ValidateAndSubmit()
+    {
+
+    }
+
+}
