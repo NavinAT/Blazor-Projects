@@ -1,0 +1,31 @@
+﻿@page "/insurancewolocal"
+
+<h1>Counter</h1>
+
+@if(_insurance != null)
+{
+    <p>Insurance Name: <strong>@_insurance.InsuranceName</strong></p>
+    <p>Insurance Caption: <strong>@_insurance.Caption</strong></p>
+    <p>Insurance Code: <strong>@_insurance.InsuranceCode</strong></p>
+}
+else
+{
+    <p style="color: cornflowerblue">Loading....</p>
+
+    <button class="btn btn-primary" @onclick="@SetInsuranceDetails">Click me</button>
+}
+
+@code {
+    Insurance _insurance;
+
+    void SetInsuranceDetails()
+    {
+        _insurance = new Insurance
+                     {
+                         InsuranceName = "LIC",
+                         Caption = "Life Insurance Corporation",
+                         InsuranceCode = 100013
+                     };
+    }
+
+}

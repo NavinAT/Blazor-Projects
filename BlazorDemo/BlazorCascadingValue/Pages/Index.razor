@@ -1,0 +1,50 @@
+﻿@page "/"
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+<hr />
+<h5 style="color: skyblue">Single Cascading value passed to multiple same type parameter</h5>
+<CascadingValue Value="@FirstFruit">
+    <Counter></Counter>
+</CascadingValue>
+
+@code
+{
+    //For Single cascading value
+
+    public string FirstFruit { get; set; } = "Apple";
+
+}
+
+<hr />
+<h5 style="color: aqua">Multiple Cascading value passed to multiple same type parameter</h5>
+<CascadingValue Value="@FruitOne">
+    <CascadingValue Value="@FruitTwo">
+        <CascadingValuePassing2Values></CascadingValuePassing2Values>
+    </CascadingValue>
+</CascadingValue>
+
+@code
+{
+    //For Multiple Cascading Value
+
+    public string FruitOne { get; set; } = "Apple";
+    public string FruitTwo { get; set; } = "Mango";
+
+}
+
+<hr />
+<h5 style="color: yellowgreen">Multiple Cascading value passed to multiple same type parameter with Identifier</h5>
+<CascadingValue Value="@First_Fruit" Name="firstfruit">
+    <CascadingValue Value="@Second_Fruit" Name="SecondFruit">
+        <CascadingTwoValuesWithIdentifier></CascadingTwoValuesWithIdentifier>
+    </CascadingValue>
+</CascadingValue>
+
+@code
+{
+    // For Multiple Cascading Values with identifier
+    public string First_Fruit { get; set; } = "Watermelon";
+    public string Second_Fruit { get; set; } = "Banana";
+}

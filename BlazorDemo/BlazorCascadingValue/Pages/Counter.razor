@@ -1,0 +1,17 @@
+﻿@page "/counter"
+
+<h5>Cascading value will be set to all the parameters which matches string type.</h5>
+
+<hr />
+<p>Cascading Parameter One: @FirstFruit </p>
+<p>Cascading Parameter Two: @SecondFruit </p>
+
+@code {
+
+    [CascadingParameter]
+    public string FirstFruit { get; set; }
+
+    [CascadingParameter]
+    public string SecondFruit { get; set; }
+
+}

@@ -1,0 +1,15 @@
+﻿<h5>Multiple Values with Identifier</h5>
+
+<hr />
+<p>Cascading Value One: @FirstFruit</p>
+<p>Cascading Value Two: @SecondFruit</p>
+
+@code
+{
+    [CascadingParameter(Name = "FirstFruit")]
+    public string FirstFruit { get; set; }
+
+    [CascadingParameter(Name = "SecondFruit")]
+    public string SecondFruit { get; set; }
+
+}

@@ -1,0 +1,15 @@
+﻿<h5>Passing two Cascading values and it accepts closest ancestor value (Fruit Two)</h5>
+
+<hr/>
+<p>Cascading Value One: @FirstFruit</p>
+<p>Cascading Value Two: @SecondFruit</p>
+
+@code {
+
+    [CascadingParameter]
+    public string FirstFruit { get; set; }
+
+    [CascadingParameter]
+    public string SecondFruit { get; set; }
+
+}

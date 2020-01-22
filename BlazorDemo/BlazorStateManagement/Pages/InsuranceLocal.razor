@@ -1,0 +1,40 @@
+﻿@page "/insurancelocal"
+@using Microsoft.AspNetCore.ProtectedBrowserStorage
+@inject ProtectedLocalStorage  ProtectedLocalStorage
+
+<h1>Counter</h1>
+
+@if (_insurance != null)
+{
+    <p>Insurance Name: <strong>@_insurance.InsuranceName</strong></p>
+    <p>Insurance Caption: <strong>@_insurance.Caption</strong></p>
+    <p>Insurance Code: <strong>@_insurance.InsuranceCode</strong></p>
+
+}
+else
+{
+    <p style="color: cornflowerblue">Loading....</p>
+
+    <button class="btn btn-primary" @onclick="@SetInsuranceDetails">Click me</button>
+}
+
+@code {
+    Insurance _insurance;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _insurance = await ProtectedLocalStorage.GetAsync<Insurance>("insurance");
+    }
+
+    async Task SetInsuranceDetails()
+    {
+        _insurance = new Insurance
+        {
+            InsuranceName = "LIC",
+            Caption = "Life Insurance Corporation",
+            InsuranceCode = 100013
+        };
+
+        await ProtectedLocalStorage.SetAsync("insurance", _insurance);
+    }
+}
