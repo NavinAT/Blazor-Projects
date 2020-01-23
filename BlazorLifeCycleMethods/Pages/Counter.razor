@@ -3,15 +3,23 @@
 <h4>Increment Counter</h4>
 
 <!-- Child Component -->
-<DisplayValue Counter=@CounterValue />
+<DisplayValue Counter=@CounterValue CounterReduce="@CounterReduce"/>
 
 <button class="btn btn-primary" @onclick="@IncrementCount">Click me</button>
+<button class="btn btn-primary" @onclick="@DecrementCount">Decrement</button>
 
 @code {
     private int CounterValue = 0;
+    private int CounterReduce = 0;
 
     private void IncrementCount()
     {
         CounterValue = CounterValue += 2;
+
+        CounterReduce = CounterValue += 2;
+    }
+    private void DecrementCount()
+    {
+        //CounterReduce = CounterValue -= 2;
     }
 }

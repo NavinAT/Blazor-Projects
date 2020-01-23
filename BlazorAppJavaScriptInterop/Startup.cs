@@ -42,6 +42,7 @@ namespace BlazorAppJavaScriptInterop
 				app.UseHsts();
 			}
 
+			app.UsePathBase("/CoolApp");
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
 

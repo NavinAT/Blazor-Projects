@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Components.Rendering;
 
 namespace BlazorInsuranceApp
 {
-	public class MyField : ComponentBase
+	public class Field : ComponentBase
 	{
 		#region Properties
 		[Parameter]

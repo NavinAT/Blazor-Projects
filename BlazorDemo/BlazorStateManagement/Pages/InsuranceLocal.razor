@@ -2,7 +2,6 @@
 @using Microsoft.AspNetCore.ProtectedBrowserStorage
 @inject ProtectedLocalStorage  ProtectedLocalStorage
 
-<h1>Counter</h1>
 
 @if (_insurance != null)
 {
@@ -21,7 +20,16 @@ else
 @code {
     Insurance _insurance;
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnAfterRenderAsync(bool bfirstRender)
+    {
+        if(bfirstRender)
+        {
+            await LoadStateAsync();
+            StateHasChanged();
+        }
+    }
+
+    async Task LoadStateAsync()
     {
         _insurance = await ProtectedLocalStorage.GetAsync<Insurance>("insurance");
     }

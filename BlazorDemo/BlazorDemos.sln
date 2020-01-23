@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLayouts", "BlazorLayo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ErrorHandling", "ErrorHandling\ErrorHandling.csproj", "{96151994-1143-478D-84C0-B6725D620ECC}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp1", "..\..\..\..\Users\naveen\Downloads\Workouts-master (1)\Workouts-master\BlazorApp1\BlazorApp1\BlazorApp1.csproj", "{DEB68CC3-6D68-4158-B7A8-30CBEB3A0A13}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{96151994-1143-478D-84C0-B6725D620ECC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96151994-1143-478D-84C0-B6725D620ECC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96151994-1143-478D-84C0-B6725D620ECC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEB68CC3-6D68-4158-B7A8-30CBEB3A0A13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEB68CC3-6D68-4158-B7A8-30CBEB3A0A13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEB68CC3-6D68-4158-B7A8-30CBEB3A0A13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEB68CC3-6D68-4158-B7A8-30CBEB3A0A13}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

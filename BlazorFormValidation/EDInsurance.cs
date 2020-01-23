@@ -15,7 +15,7 @@ namespace BlazorFormValidation
 		[Required(ErrorMessage = "Caption is required")]
 		public string Caption { get; set; }
 
-		[Required]
+		[Range(typeof(bool), "true", "true", ErrorMessage = "The Field is active must be checked")]
 		public bool IsEmployeeExists { get; set; }
 
 		[Required(ErrorMessage = "Date of birth is required")]

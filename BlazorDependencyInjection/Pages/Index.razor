@@ -1,5 +1,10 @@
 ﻿@page "/"
+@inject SingletonService SingletonService
 
 <h1>Hello, Yaas!</h1>
 
 Welcome to Dependency Injection!!!!.
+
+<div class="alert alert-dark">
+    Random Guid Number: @SingletonService.RandomGuid
+</div>

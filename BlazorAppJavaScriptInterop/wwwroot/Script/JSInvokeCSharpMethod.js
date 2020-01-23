@@ -1,4 +1,4 @@
-﻿function CSMethod()
+﻿function JSMethod()
 {
     DotNet.invokeMethodAsync('BlazorAppJavaScriptInterop', 'CSCallBackMethod');
 }

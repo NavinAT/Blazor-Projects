@@ -1,0 +1,15 @@
+﻿@page "/testinsurancelocal"
+@inherits TestLocalStorageBase
+
+@if(_insurance != null)
+{
+    <p>Insurance Name: <strong>@_insurance.InsuranceName</strong></p>
+    <p>Insurance Caption: <strong>@_insurance.Caption</strong></p>
+    <p>Insurance Code: <strong>@_insurance.InsuranceCode</strong></p>
+}
+else
+{
+    <p style="color: cornflowerblue">Loading....</p>
+
+    <button class="btn btn-primary" @onclick="@SetInsuranceDetails">Click me</button>
+}

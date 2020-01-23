@@ -1,20 +1,28 @@
 ﻿
 <p>@strCounterCount</p>
+<p>@strCounterReduce</p>
 
 @code {
 
     [Parameter] public int Counter { get; set; }
 
+    [Parameter] public int CounterReduce { get; set; }
+
     private string strCounterCount;
+    private string strCounterReduce;
 
     protected override void OnInitialized()
     {
         strCounterCount = string.Empty;
+        strCounterReduce = string.Empty;
     }
 
     protected override void OnParametersSet()
     {
         strCounterCount = Counter.ToString() + " and counting...";
+
+        if(Counter > 0)
+            strCounterReduce = CounterReduce.ToString() + " and reducing";
     }
 
 }
