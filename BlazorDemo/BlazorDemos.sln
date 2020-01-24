@@ -31,6 +31,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ErrorHandling", "ErrorHandl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp1", "..\..\..\..\Users\naveen\Downloads\Workouts-master (1)\Workouts-master\BlazorApp1\BlazorApp1\BlazorApp1.csproj", "{DEB68CC3-6D68-4158-B7A8-30CBEB3A0A13}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorKestrelSample", "BlazorKestrelSample\BlazorKestrelSample.csproj", "{522536DC-6965-469B-B436-9800E7A8C358}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeployTestAPP", "..\Asp.NETCoreWebAPP\DeployTestAPP\DeployTestAPP.csproj", "{803A911B-2322-4996-BF80-5B0B90AF82C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +97,14 @@ Global
 		{DEB68CC3-6D68-4158-B7A8-30CBEB3A0A13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEB68CC3-6D68-4158-B7A8-30CBEB3A0A13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEB68CC3-6D68-4158-B7A8-30CBEB3A0A13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{522536DC-6965-469B-B436-9800E7A8C358}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{522536DC-6965-469B-B436-9800E7A8C358}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{522536DC-6965-469B-B436-9800E7A8C358}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{522536DC-6965-469B-B436-9800E7A8C358}.Release|Any CPU.Build.0 = Release|Any CPU
+		{803A911B-2322-4996-BF80-5B0B90AF82C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{803A911B-2322-4996-BF80-5B0B90AF82C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{803A911B-2322-4996-BF80-5B0B90AF82C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{803A911B-2322-4996-BF80-5B0B90AF82C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

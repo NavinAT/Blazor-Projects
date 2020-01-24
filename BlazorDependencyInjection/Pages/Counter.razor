@@ -5,6 +5,7 @@
 <p>Current count: @currentCount</p>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<h5 style="color:cornflowerblue">@System.Diagnostics.Process.GetCurrentProcess().ProcessName</h5>
 
 @code {
     int currentCount = 0;
