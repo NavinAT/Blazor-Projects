@@ -24,7 +24,7 @@ namespace BlazorKestrelSample
 
 		//public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 		//	WebHost.CreateDefaultBuilder(args)
-		//	       .UseUrls("http://localhost:6000")
+		//	       .UseUrls("http://localhost:8000")
 		//	       .UseKestrel()
 		//	       .UseStartup<Startup>();
 
