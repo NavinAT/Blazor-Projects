@@ -1,0 +1,31 @@
+﻿@page "/todo"
+@inherits BlazorApp1.ToDoClass
+@code{
+
+
+}
+<h3>ToDo</h3>
+<ul>
+    @foreach (MyDoTo todo in todos)
+    {
+        <li>
+            <input type="checkbox" @bind="todo.IsDone" />
+            <input @bind="todo.Title" />
+        </li>
+    }
+</ul>
+
+<input placeholder="todo..." @bind="newtodo"/>
+<button @onclick="AddNew">New todo</button>
+
+@*@code {
+    private IList<MyDoTo> todos = new List<MyDoTo>();
+    private string newtodo;
+
+    private void AddNew()
+    {
+        if (string.IsNullOrEmpty(newtodo)) return;
+        todos.Add(new MyDoTo { Title = newtodo });
+        newtodo = string.Empty;
+    }
+}*@
