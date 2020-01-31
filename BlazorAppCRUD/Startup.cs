@@ -26,6 +26,7 @@ namespace BlazorAppCRUD
 		{
 			services.AddRazorPages();
 			services.AddServerSideBlazor();
+			services.AddProtectedBrowserStorage();
 			//services.AddSingleton<WeatherForecastService>();
 		}
 

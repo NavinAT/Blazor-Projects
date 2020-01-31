@@ -22,7 +22,9 @@ namespace BlazorAppCRUD
 		protected IJSRuntime JSRuntime { get; set; }
 
 		private string strEmployeeId { get; set; }
-		protected bool bConfirm { get; set; }
+
+		[Parameter]
+		public bool Confirm { get; set; }
 		#endregion
 
 		#region Protecteds

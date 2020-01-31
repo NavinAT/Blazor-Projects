@@ -1,11 +1,12 @@
-﻿@page "/listemployees"
+﻿@page "/"
+@page "/listemployees"
 @inherits ListEmployeeBase
 <h4>List Employees</h4>
 
 <p>
     <a href="/createemployee">Create New Employee</a>
 </p>
-@if(lstEmployees.Count == 0)
+@if (lstEmployees.Count == 0)
 {
     <div class="alert alert-warning">
         <strong>Warning!</strong> No Employee record found.
@@ -15,16 +16,16 @@ else
 {
     <table class="table">
         <thead>
-        <tr>
-            <th>Employee Name</th>
-            <th>Department</th>
-            <th>Salary</th>
-            <th>Date of Birth</th>
-            <th>City</th>
-        </tr>
+            <tr>
+                <th>Employee Name</th>
+                <th>Department</th>
+                <th>Salary</th>
+                <th>Date of Birth</th>
+                <th>City</th>
+            </tr>
         </thead>
         <tbody>
-            @foreach(EmployeeInformation employee in lstEmployees)
+            @foreach (EmployeeInformation employee in lstEmployees)
             {
                 <tr>
                     <td>@employee.EmployeeName</td>
@@ -33,7 +34,7 @@ else
                     <td>@employee.DOB</td>
                     <td>@employee.City</td>
                     <td>
-                        <a href="/editemployee/@employee.EmployeeId/true">Edit</a>
+                        <a @onclick="(() => ShowEditRazor(employee.EmployeeId))">Edit</a>
                         <a href="/deleteemployee/@employee.EmployeeId">Delete</a>
                     </td>
                 </tr>
@@ -41,3 +42,22 @@ else
         </tbody>
     </table>
 }
+
+@if (bConfirm)
+    {
+        <hr />
+        <EditEmployee EmployeeId="@EmployeeId" Confirm="@bConfirm"/>
+    }
+
+
+    @code
+    {
+        private bool bConfirm { get; set; }
+        private string EmployeeId { get; set; }
+
+        private void ShowEditRazor(string strEmployeeId)
+        {
+            EmployeeId = strEmployeeId;
+            bConfirm = true;
+        }
+    }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
@@ -34,11 +35,14 @@ namespace BlazorAppCRUD
 			this.strEmployeeID = this.EmployeeId;
 		}
 
-		protected void Delete()
+		protected async Task Delete()
 		{
-			var bConfirm= IJSRuntime.InvokeAsync<bool>("DeleteConfirmation");
-			EmployeeCRUD.DeleteEmployee(strEmployeeID);
-			this.NavigationManager.NavigateTo("listemployees");
+			var bConfirm = await this.IJSRuntime.InvokeAsync<bool>("DeleteConfirmation");
+			if(bConfirm)
+			{
+				EmployeeCRUD.DeleteEmployee(strEmployeeID);
+				this.NavigationManager.NavigateTo("listemployees");
+			}
 		}
 
 		protected void Cancel()

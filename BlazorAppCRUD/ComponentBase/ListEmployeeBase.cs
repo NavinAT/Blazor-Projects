@@ -14,6 +14,7 @@ namespace BlazorAppCRUD
 		{
 			lstEmployees = EmployeeCRUD.FetchEmployees();
 		}
+
 		#endregion
 	}
 }

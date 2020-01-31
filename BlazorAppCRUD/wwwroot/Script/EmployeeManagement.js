@@ -1,4 +1,6 @@
 ﻿function DeleteConfirmation()
 {
-    return confirm('Do you want to Delete');
+    var result = confirm('Do you want to Delete');
+
+    return result;
 }

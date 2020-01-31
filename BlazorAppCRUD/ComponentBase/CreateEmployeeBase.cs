@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.ProtectedBrowserStorage;
 using Microsoft.JSInterop;
 
 namespace BlazorAppCRUD
@@ -15,6 +17,9 @@ namespace BlazorAppCRUD
 		[Inject]
 		protected NavigationManager NavigationManager { get; set; }
 
+		//[Inject]
+		//protected ProtectedBrowserStorage localBrowserStorage { get; set; }
+
 		[Inject]
 		protected IJSRuntime JSRuntime { get; set; }
 		#endregion
@@ -29,13 +34,26 @@ namespace BlazorAppCRUD
 
 		protected override async void OnAfterRender(bool firstRender)
 		{
+			//if(firstRender)
+			//{
+			//	await LoadStateAsync();
+			//	StateHasChanged();
+			//}
+
 			await this.JSRuntime.InvokeVoidAsync("addDatePicker");
-			base.OnAfterRender(firstRender);
 		}
+
+		//private async Task LoadStateAsync()
+		//{
+		//	employee = await this.localBrowserStorage.GetAsync<EmployeeInformation>("EmployeeData");
+		//}
 
 		protected void CreateNewEmployee()
 		{
 			EmployeeCRUD.CreateEmployee(employee);
+
+			//this.localBrowserStorage.SetAsync("EmployeeData", employee);
+
 			this.NavigationManager.NavigateTo("listemployees");
 		}
 
