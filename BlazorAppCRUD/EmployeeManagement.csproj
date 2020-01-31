@@ -29,7 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Blazor.Data\BlazorCURD.Data.csproj" />
+    <ProjectReference Include="..\Blazor.Data\EmployeeManagement.Data.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 
 namespace BlazorAppCRUD
 {
@@ -14,6 +16,11 @@ namespace BlazorAppCRUD
 
 		[Inject]
 		protected NavigationManager NavigationManager { get; set; }
+
+		[Inject]
+		protected IJSRuntime IJSRuntime { get; set; }
+
+		private string strEmployeeID { get; set; }
 		#endregion
 
 		#region Protecteds
@@ -22,9 +29,15 @@ namespace BlazorAppCRUD
 			employee = EmployeeCRUD.FetchSingleEmployee(this.EmployeeId);
 		}
 
+		protected override void OnParametersSet()
+		{
+			this.strEmployeeID = this.EmployeeId;
+		}
+
 		protected void Delete()
 		{
-			EmployeeCRUD.DeleteEmployee(this.EmployeeId);
+			var bConfirm= IJSRuntime.InvokeAsync<bool>("DeleteConfirmation");
+			EmployeeCRUD.DeleteEmployee(strEmployeeID);
 			this.NavigationManager.NavigateTo("listemployees");
 		}
 

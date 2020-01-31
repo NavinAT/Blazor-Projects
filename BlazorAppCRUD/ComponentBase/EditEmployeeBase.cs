@@ -20,6 +20,9 @@ namespace BlazorAppCRUD
 
 		[Inject]
 		protected IJSRuntime JSRuntime { get; set; }
+
+		private string strEmployeeId { get; set; }
+		protected bool bConfirm { get; set; }
 		#endregion
 
 		#region Protecteds
@@ -31,6 +34,11 @@ namespace BlazorAppCRUD
 			DropDownValues = EmployeeCRUD.FetchDropDownList(strTableName);
 		}
 
+		protected override void OnParametersSet()
+		{
+			this.strEmployeeId = this.EmployeeId;
+		}
+
 		protected override async void OnAfterRender(bool firstRender)
 		{
 			await this.JSRuntime.InvokeVoidAsync("addDatePicker");
@@ -39,7 +47,7 @@ namespace BlazorAppCRUD
 
 		protected void UpdateEmployee()
 		{
-			EmployeeCRUD.EditEmployee(this.EmployeeId, employee);
+			EmployeeCRUD.EditEmployee(strEmployeeId, employee);
 			this.NavigationManager.NavigateTo("listemployees");
 		}
 
