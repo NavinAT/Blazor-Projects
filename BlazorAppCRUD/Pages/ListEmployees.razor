@@ -34,7 +34,7 @@ else
                     <td>@employee.DOB</td>
                     <td>@employee.City</td>
                     <td>
-                        <a @onclick="(() => ShowEditRazor(employee.EmployeeId))">Edit</a>
+                        <a style="color: blue;font-weight:bold" @onclick="(() => ShowEditRazor(employee.EmployeeId))">Edit</a>
                         <a href="/deleteemployee/@employee.EmployeeId">Delete</a>
                     </td>
                 </tr>
