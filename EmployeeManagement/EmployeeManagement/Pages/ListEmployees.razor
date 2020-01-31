@@ -1,12 +1,14 @@
 ﻿@page "/"
 @page "/listemployees"
 @inherits ListEmployeeBase
+@attribute [Authorize]
+
 <h4>List Employees</h4>
 
 <p>
     <a href="/createemployee">Create New Employee</a>
 </p>
-@if(lstEmployees.Count == 0)
+@if(EmployeeDetails.ListEmployee == null || EmployeeDetails.ListEmployee.Count == 0)
 {
     <div class="alert alert-warning">
         <strong>Warning!</strong> No Employee record found.
@@ -25,7 +27,7 @@ else
         </tr>
         </thead>
         <tbody>
-        @foreach(EmployeeInformation employee in lstEmployees)
+        @foreach(EmployeeInformation employee in EmployeeDetails.ListEmployee)
         {
             <tr>
                 <td>@employee.EmployeeName</td>
@@ -42,6 +44,7 @@ else
         </tbody>
     </table>
 }
+
 
 @if(bConfirm)
 {
