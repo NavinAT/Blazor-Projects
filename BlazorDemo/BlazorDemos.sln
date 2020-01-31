@@ -33,7 +33,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorKestrelSample", "Blaz
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeployTestAPP", "..\Asp.NETCoreWebAPP\DeployTestAPP\DeployTestAPP.csproj", "{803A911B-2322-4996-BF80-5B0B90AF82C4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp1", "BlazorApp1\BlazorApp1.csproj", "{B7E7C721-9FFF-4D4C-9BC1-C546DF971FC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLayout", "BlazorApp1\BlazorLayout.csproj", "{B7E7C721-9FFF-4D4C-9BC1-C546DF971FC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorAppPartialSupport", "BlazorAppPartialSupport\BlazorAppPartialSupport.csproj", "{700EAD56-DEDD-4A4C-8346-7FBB713BC8D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,6 +107,10 @@ Global
 		{B7E7C721-9FFF-4D4C-9BC1-C546DF971FC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7E7C721-9FFF-4D4C-9BC1-C546DF971FC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7E7C721-9FFF-4D4C-9BC1-C546DF971FC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{700EAD56-DEDD-4A4C-8346-7FBB713BC8D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{700EAD56-DEDD-4A4C-8346-7FBB713BC8D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{700EAD56-DEDD-4A4C-8346-7FBB713BC8D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{700EAD56-DEDD-4A4C-8346-7FBB713BC8D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
