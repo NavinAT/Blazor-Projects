@@ -93,6 +93,20 @@ app {
 
 .content {
     padding-top: 1.1rem;
+    /*display: flex;
+    flex-wrap: wrap*/;
+}
+
+.widgetcontent {
+	display: flex;
+    flex-wrap: wrap;
+}
+
+.widget {
+    height: 400px;
+    width: 800px;
+    border: 1px solid;
+    overflow: auto;
 }
 
 .navbar-toggler {

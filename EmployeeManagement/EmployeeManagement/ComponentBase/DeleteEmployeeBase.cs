@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
+using EmployeeManagement;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
@@ -17,6 +17,9 @@ namespace BlazorAppCRUD
 
 		[Inject]
 		protected NavigationManager NavigationManager { get; set; }
+
+		[Inject]
+		public EmployeeDetails EmployeeDetails { get; set; }
 
 		[Inject]
 		protected IJSRuntime IJSRuntime { get; set; }
@@ -37,12 +40,11 @@ namespace BlazorAppCRUD
 
 		protected async Task Delete()
 		{
-			var bConfirm = await this.IJSRuntime.InvokeAsync<bool>("DeleteConfirmation");
-			if(bConfirm)
-			{
-				EmployeeCRUD.DeleteEmployee(strEmployeeID);
-				this.NavigationManager.NavigateTo("listemployees");
-			}
+			await this.IJSRuntime.InvokeVoidAsync("DeleteConfirmation", this.strEmployeeID);
+
+			this.EmployeeDetails.ListEmployee = null;
+			//EmployeeCRUD.DeleteEmployee(this.strEmployeeID);
+			this.NavigationManager.NavigateTo("listemployees");
 		}
 
 		protected void Cancel()

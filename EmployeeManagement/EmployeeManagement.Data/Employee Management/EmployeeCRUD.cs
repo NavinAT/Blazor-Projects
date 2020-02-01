@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using Microsoft.JSInterop;
 
 namespace BlazorAppCRUD
 {
@@ -12,7 +13,6 @@ namespace BlazorAppCRUD
 
 		#region Fields
 		private static SqlCommand sqlCommand;
-		public List<EmployeeInformation> lstEmployees { get; set; }
 		#endregion
 
 		#region Publics
@@ -106,6 +106,7 @@ namespace BlazorAppCRUD
 			OpenAndCloseConnection(con, sqlCommand);
 		}
 
+		[JSInvokable]
 		public static void DeleteEmployee(string strEmployeeId)
 		{
 			using SqlConnection con = new SqlConnection(CONNECTION_STRING);

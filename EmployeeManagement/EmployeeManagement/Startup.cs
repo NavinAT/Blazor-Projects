@@ -31,7 +31,6 @@ namespace BlazorAppCRUD
 			services.AddServerSideBlazor();
 			services.AddProtectedBrowserStorage();
 			services.AddSingleton<EmployeeDetails>();
-			//services.AddSingleton<WeatherForecastService>();
 
             // Get authentication info
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

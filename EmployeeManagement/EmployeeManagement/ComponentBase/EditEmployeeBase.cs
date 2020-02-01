@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using EmployeeManagement;
-using EmployeeManagement.Pages;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
@@ -18,23 +16,22 @@ namespace BlazorAppCRUD
 		[Parameter]
 		public string EmployeeId { get; set; }
 
-		[Inject]
-		protected NavigationManager NavigationManager { get; set; }
+		[Parameter]
+		public bool IsAllowToDisplay { get; set; }
 
 		[Inject]
 		public EmployeeDetails EmployeeDetails { get; set; }
+
+		[Parameter]
+		public EventCallback OnClick { get; set; }
+
+		[Inject]
+		protected NavigationManager NavigationManager { get; set; }
 
 		[Inject]
 		protected IJSRuntime JSRuntime { get; set; }
 
 		private string strEmployeeId { get; set; }
-
-		[Parameter]
-		public bool Confirm { get; set; }
-		
-
-		[Parameter]
-		public EventCallback OnClick { get; set; }
 		#endregion
 
 		#region Protecteds
@@ -54,20 +51,16 @@ namespace BlazorAppCRUD
 		protected override async void OnAfterRender(bool firstRender)
 		{
 			await this.JSRuntime.InvokeVoidAsync("addDatePicker");
-			base.OnAfterRender(firstRender);
 		}
 
 		protected void UpdateEmployee()
 		{
 			EmployeeCRUD.EditEmployee(this.strEmployeeId, employee);
 
-			EmployeeDetails.ListEmployee = null;
-			this.Confirm = false;
+			this.EmployeeDetails.ListEmployee = null;
+			this.IsAllowToDisplay = false;
 			this.NavigationManager.NavigateTo("createemployee");
 			this.NavigationManager.NavigateTo("listemployees");
-
-			
-
 		}
 
 		protected void Cancel()

@@ -1,5 +1,5 @@
 ﻿@page "/"
-@namespace EmployeeManagement.Pages
+@namespace EmployeeManagement.Pages.EmployeeDetails
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 <!DOCTYPE html>
@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BlazorAppCRUD</title>
+    <title>Employee Management</title>
     <base href="~/" />
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
     <link href="css/site.css" rel="stylesheet" />
@@ -25,15 +25,20 @@
         @(await Html.RenderComponentAsync<App>(RenderMode.Server))
     </app>
 
-<script src="_framework/blazor.server.js"></script>
-<script>
-    window.addDatePicker = () =>
-    {
-        $("#DOB").datepicker({
-            changeMonth: true,
-            changeYear: true
-        });
-    }
-</script>
+    <script src="_framework/blazor.server.js"></script>
+    <script>
+        window.addDatePicker = () => {
+            $("#DOB").datepicker({
+                dateFormat: 'dd-mm-yy',
+                changeMonth: true,
+                changeYear: true,
+                defaultDate: new Date(2018, 11, 24),
+                onSelect: function () {
+                    var date = $(this).datepicker("getDate");
+                    this.value = date;
+                }
+            });
+        }
+    </script>
 </body>
 </html>

@@ -1,6 +1,11 @@
-﻿function DeleteConfirmation()
+﻿function DeleteConfirmation(EmployeeId)
 {
     var result = confirm('Do you want to Delete');
 
-    return result;
+    if(result)
+    {
+        DotNet.invokeMethodAsync('EmployeeManagement.Data', 'DeleteEmployee', EmployeeId);
+
+        alert('Employee record deleted');
+    }
 }

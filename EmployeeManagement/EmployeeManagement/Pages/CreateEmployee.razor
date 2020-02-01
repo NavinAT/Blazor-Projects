@@ -1,6 +1,5 @@
 ﻿@page "/createemployee"
 @using Microsoft.AspNetCore.ProtectedBrowserStorage
-@inherits CreateEmployeeBase
 @inject ProtectedLocalStorage ProtectedLocalStorage
 
 <h4>Create New Employee Record</h4>
@@ -12,13 +11,13 @@
     <div class="row">
         <div class="col-md-8">
             <div class="form-group">
-                <label for="Name">Name</label>
+                <label for="Name">Name*</label>
                 <InputText id="Name" class="form-control" @bind-Value="@Employee.EmployeeName"/>
                 @*<input id="Name" class="form-control" @bind="@Employee.EmployeeName" />*@
                 <ValidationMessage For="() => Employee.EmployeeName"/>
             </div>
             <div class="form-group">
-                <label for="Department">Department</label>
+                <label for="Department">Department*</label>
                 <input id="Department" class="form-control" @bind="@Employee.Department"/>
                 <ValidationMessage For="() => Employee.Department"/>
             </div>
@@ -27,8 +26,8 @@
                 <input id="Salary" class="form-control" @bind="@Employee.Salary"/>
             </div>
             <div class="form-group">
-                <label for="DOB">Date Of Birth</label>
-                <input id="DOB" class="form-control" @bind="@Employee.DOB" @bind:format="dd/MM/yyyy"/>
+                <label for="DOB">Date Of Birth*</label>
+                <input id="DOB" class="form-control" @bind="@Employee.DOB" @bind:format="dd/mm/yyyy"/>
                 <ValidationMessage For="() => Employee.DOB"/>
             </div>
             <div class="form-group">
@@ -52,39 +51,3 @@
         </div>
     </div>
 </EditForm>
-
-@code
-{
-    private EmployeeInformation Employee { get; set; } = new EmployeeInformation();
-
-    protected override void OnInitialized()
-    {
-        const string strTableName = nameof(Employee.City);
-
-        DropDownValues = EmployeeCRUD.FetchDropDownList(strTableName);
-    }
-
-    protected override async void OnAfterRender(bool firstRender)
-    {
-        //if (firstRender)
-        //{
-        //    await LoadStateAsync();
-        //    StateHasChanged();
-        //}
-    }
-
-    //private async Task LoadStateAsync()
-    //{
-    //    Employee = await ProtectedLocalStorage.GetAsync<EmployeeInformation>("EmployeeData");
-    //}
-
-    private void CreateNewEmployee()
-    {
-        EmployeeCRUD.CreateEmployee(Employee);
-
-        //ProtectedLocalStorage.SetAsync("EmployeeData", Employee);
-
-        NavigationManager.NavigateTo("listemployees");
-    }
-
-}

@@ -1,5 +1,4 @@
-﻿@page "/"
-@page "/listemployees"
+﻿@page "/listemployees"
 @inherits ListEmployeeBase
 @attribute [Authorize]
 
@@ -46,21 +45,21 @@ else
 }
 
 
-@if(bConfirm)
+@if(bShowEditEmployee)
 {
     <hr/>
-    <EditEmployee EmployeeId="@EmployeeId" Confirm="@bConfirm"/>
+    <EditEmployee EmployeeId="@EmployeeId" IsAllowToDisplay="@bShowEditEmployee"/>
 }
 
 
 @code
 {
-    private bool bConfirm { get; set; }
+    private bool bShowEditEmployee { get; set; }
     private string EmployeeId { get; set; }
 
     private void ShowEditRazor(string strEmployeeId)
     {
         EmployeeId = strEmployeeId;
-        bConfirm = true;
+        bShowEditEmployee = true;
     }
 }
