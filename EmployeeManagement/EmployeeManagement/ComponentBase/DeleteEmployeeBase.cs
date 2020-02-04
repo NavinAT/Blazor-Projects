@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using EmployeeManagement;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
@@ -13,7 +14,7 @@ namespace BlazorAppCRUD
 
 		#region Properties
 		[Parameter]
-		public string EmployeeId { get; set; }
+		public Guid EmployeeNumber { get; set; }
 
 		[Inject]
 		protected NavigationManager NavigationManager { get; set; }
@@ -24,26 +25,25 @@ namespace BlazorAppCRUD
 		[Inject]
 		protected IJSRuntime IJSRuntime { get; set; }
 
-		private string strEmployeeID { get; set; }
+		private Guid qEmployeeNumber { get; set; }
 		#endregion
 
 		#region Protecteds
 		protected override void OnInitialized()
 		{
-			employee = EmployeeCRUD.FetchSingleEmployee(this.EmployeeId);
+			employee = EmployeeCRUD.FetchSingleEmployee(this.EmployeeNumber);
 		}
 
 		protected override void OnParametersSet()
 		{
-			this.strEmployeeID = this.EmployeeId;
+			this.qEmployeeNumber = this.EmployeeNumber;
 		}
 
 		protected async Task Delete()
 		{
-			await this.IJSRuntime.InvokeVoidAsync("DeleteConfirmation", this.strEmployeeID);
+			await this.IJSRuntime.InvokeVoidAsync("DeleteConfirmation", this.qEmployeeNumber);
 
 			this.EmployeeDetails.ListEmployee = null;
-			//EmployeeCRUD.DeleteEmployee(this.strEmployeeID);
 			this.NavigationManager.NavigateTo("listemployees");
 		}
 

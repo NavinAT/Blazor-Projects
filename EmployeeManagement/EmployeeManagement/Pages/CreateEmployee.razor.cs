@@ -33,15 +33,6 @@ namespace EmployeeManagement.Pages
 			DropDownValues = EmployeeCRUD.FetchDropDownList(strTableName);
 		}
 
-		//protected override async void OnAfterRender(bool firstRender)
-		//{
-		//	if (firstRender)
-		//	{
-		//		await LoadStateAsync();
-		//		StateHasChanged();
-		//	}
-		//	//await this.JSRuntime.InvokeVoidAsync("addDatePicker");
-		//}
 		#endregion
 
 		#region Privates

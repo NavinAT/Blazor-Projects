@@ -36,7 +36,7 @@ namespace BlazorAppCRUD.Pages.Login
 				return Page();
 			}
 
-			if(!(this.Email.ToLower().Equals("test@m-s.in") && this.Password.Equals("123456")))
+			if(!(this.Email.ToLower().Equals("hans.imboden@m-s.in") && this.Password.Equals("123456")))
 			{
 				this.TempData["LoginError"] = "The given credential is not valid.";
 				return Page();
@@ -44,7 +44,7 @@ namespace BlazorAppCRUD.Pages.Login
 
 			List<Claim> claims = new List<Claim>
 			                     {
-				                     new Claim(ClaimTypes.Name, "Test"),
+				                     new Claim(ClaimTypes.Name, "Hans"),
 				                     new Claim(ClaimTypes.Email, this.Email)
 			                     };
 

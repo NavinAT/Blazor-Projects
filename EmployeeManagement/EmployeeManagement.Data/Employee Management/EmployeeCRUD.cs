@@ -19,9 +19,9 @@ namespace BlazorAppCRUD
 		public static void CreateEmployee(EmployeeInformation employee)
 		{
 			using SqlConnection sqlConnection = new SqlConnection(CONNECTION_STRING);
-			const string strInsertQuery = "insert into Employee(EmployeeId, EmployeeName, Department, salary, DOB, City) values(@EmployeeId, @EmployeeName, @Department, @Salary, @DOB, @City)";
+			const string strInsertQuery = "insert into Employee(EmployeeId, EmployeeName, Department, salary, DOB, City) values(@EmployeeNumber, @EmployeeName, @Department, @Salary, @DOB, @City)";
 			sqlCommand = new SqlCommand(strInsertQuery, sqlConnection);
-			sqlCommand.Parameters.AddWithValue("@EmployeeId", Guid.NewGuid().ToString());
+			sqlCommand.Parameters.AddWithValue("@EmployeeNumber", Guid.NewGuid().ToString());
 			sqlCommand.Parameters.AddWithValue("@EmployeeName", employee.EmployeeName);
 			sqlCommand.Parameters.AddWithValue("@Department", employee.Department);
 			sqlCommand.Parameters.AddWithValue("@Salary", employee.Salary);
@@ -46,7 +46,7 @@ namespace BlazorAppCRUD
 				{
 					EmployeeInformation employee = new EmployeeInformation
 					{
-						EmployeeId = sqlReader["EmployeeId"].ToString(),
+						EmployeeNumber = Guid.Parse(sqlReader["EmployeeId"].ToString()),
 						EmployeeName = sqlReader["EmployeeName"].ToString(),
 						Department = sqlReader["Department"].ToString(),
 						Salary = Convert.ToInt32(sqlReader["salary"]),
@@ -63,14 +63,14 @@ namespace BlazorAppCRUD
 			return listEmployees;
 		}
 
-		public static EmployeeInformation FetchSingleEmployee(string strEmployeeId)
+		public static EmployeeInformation FetchSingleEmployee(Guid uqEmployeeNumber)
 		{
 			EmployeeInformation employee = null;
 			using SqlConnection con = new SqlConnection(CONNECTION_STRING);
-			const string strQuery = "Select * from Employee where EmployeeId = @EmployeeId";
+			const string strQuery = "Select * from Employee where EmployeeId = @EmployeeNumber";
 
 			sqlCommand = new SqlCommand(strQuery, con);
-			sqlCommand.Parameters.AddWithValue("@EmployeeId", strEmployeeId);
+			sqlCommand.Parameters.AddWithValue("@EmployeeNumber", uqEmployeeNumber);
 
 			con.Open();
 			SqlDataReader dataReader = sqlCommand.ExecuteReader();
@@ -78,7 +78,7 @@ namespace BlazorAppCRUD
 			{
 				employee = new EmployeeInformation
 				           {
-					           EmployeeId = dataReader["EmployeeId"].ToString(),
+					           EmployeeNumber = Guid.Parse(dataReader["EmployeeId"].ToString()),
 					           EmployeeName = dataReader["EmployeeName"].ToString(),
 					           Department = dataReader["Department"].ToString(),
 					           Salary = Convert.ToInt32(dataReader["salary"]),
@@ -90,13 +90,13 @@ namespace BlazorAppCRUD
 			return employee;
 		}
 
-		public static void EditEmployee(string strEmployeeId, EmployeeInformation employee)
+		public static void EditEmployee(Guid uqEmployeeNumber, EmployeeInformation employee)
 		{
 			using SqlConnection con = new SqlConnection(CONNECTION_STRING);
-			const string strUpdateQuery = "Update Employee set EmployeeName = @EmployeeName, Department = @Department, salary = @salary, DOB = @DOB, City = @City where EmployeeId = @EmployeeId";
+			const string strUpdateQuery = "Update Employee set EmployeeName = @EmployeeName, Department = @Department, salary = @salary, DOB = @DOB, City = @City where EmployeeId = @EmployeeNumber";
 
 			sqlCommand = new SqlCommand(strUpdateQuery, con);
-			sqlCommand.Parameters.AddWithValue("@EmployeeId", strEmployeeId);
+			sqlCommand.Parameters.AddWithValue("@EmployeeNumber", uqEmployeeNumber);
 			sqlCommand.Parameters.AddWithValue("@EmployeeName", employee.EmployeeName);
 			sqlCommand.Parameters.AddWithValue("@Department", employee.Department);
 			sqlCommand.Parameters.AddWithValue("@salary", employee.Salary);
@@ -107,13 +107,13 @@ namespace BlazorAppCRUD
 		}
 
 		[JSInvokable]
-		public static void DeleteEmployee(string strEmployeeId)
+		public static void DeleteEmployee(Guid gEmployeeId)
 		{
 			using SqlConnection con = new SqlConnection(CONNECTION_STRING);
-			string strDeleteQuery = "Delete from Employee where EmployeeId = @EmployeeId";
+			string strDeleteQuery = "Delete from Employee where EmployeeId = @EmployeeNumber";
 
 			sqlCommand = new SqlCommand(strDeleteQuery, con);
-			sqlCommand.Parameters.AddWithValue("@EmployeeId", strEmployeeId);
+			sqlCommand.Parameters.AddWithValue("@EmployeeNumber", gEmployeeId);
 
 			OpenAndCloseConnection(con, sqlCommand);
 		}

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using EmployeeManagement;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
@@ -14,7 +15,7 @@ namespace BlazorAppCRUD
 
 		#region Properties
 		[Parameter]
-		public string EmployeeId { get; set; }
+		public Guid EmployeeNumber { get; set; }
 
 		[Parameter]
 		public bool IsAllowToDisplay { get; set; }
@@ -31,13 +32,13 @@ namespace BlazorAppCRUD
 		[Inject]
 		protected IJSRuntime JSRuntime { get; set; }
 
-		private string strEmployeeId { get; set; }
+		private Guid qEmployeeNumber { get; set; }
 		#endregion
 
 		#region Protecteds
 		protected override void OnInitialized()
 		{
-			employee = EmployeeCRUD.FetchSingleEmployee(this.EmployeeId);
+			employee = EmployeeCRUD.FetchSingleEmployee(this.EmployeeNumber);
 
 			string strTableName = nameof(employee.City);
 			DropDownValues = EmployeeCRUD.FetchDropDownList(strTableName);
@@ -45,7 +46,7 @@ namespace BlazorAppCRUD
 
 		protected override void OnParametersSet()
 		{
-			this.strEmployeeId = this.EmployeeId;
+			this.qEmployeeNumber = this.EmployeeNumber;
 		}
 
 		protected override async void OnAfterRender(bool firstRender)
@@ -55,7 +56,7 @@ namespace BlazorAppCRUD
 
 		protected void UpdateEmployee()
 		{
-			EmployeeCRUD.EditEmployee(this.strEmployeeId, employee);
+			EmployeeCRUD.EditEmployee(this.qEmployeeNumber, employee);
 
 			this.EmployeeDetails.ListEmployee = null;
 			this.IsAllowToDisplay = false;
@@ -65,6 +66,7 @@ namespace BlazorAppCRUD
 
 		protected void Cancel()
 		{
+			this.NavigationManager.NavigateTo("createemployee");
 			this.NavigationManager.NavigateTo("listemployees");
 		}
 		#endregion

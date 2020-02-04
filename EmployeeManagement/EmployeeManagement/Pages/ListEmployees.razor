@@ -35,8 +35,8 @@ else
                 <td>@employee.DOB</td>
                 <td>@employee.City</td>
                 <td>
-                    <a style="color: blue; font-weight: bold" @onclick="(() => ShowEditRazor(employee.EmployeeId))">Edit</a>
-                    <a href="/deleteemployee/@employee.EmployeeId">Delete</a>
+                    <a style="color: blue; cursor: pointer; font-weight: bold" @onclick="(() => ShowEditRazor(employee.EmployeeNumber))">Edit</a>
+                    <a href="/deleteemployee/@employee.EmployeeNumber">Delete</a>
                 </td>
             </tr>
         }
@@ -48,18 +48,18 @@ else
 @if(bShowEditEmployee)
 {
     <hr/>
-    <EditEmployee EmployeeId="@EmployeeId" IsAllowToDisplay="@bShowEditEmployee"/>
+    <EditEmployee EmployeeNumber="@EmployeeId" IsAllowToDisplay="@bShowEditEmployee"/>
 }
 
 
 @code
 {
     private bool bShowEditEmployee { get; set; }
-    private string EmployeeId { get; set; }
+    private Guid EmployeeId { get; set; }
 
-    private void ShowEditRazor(string strEmployeeId)
+    private void ShowEditRazor(Guid uqEmployeeId)
     {
-        EmployeeId = strEmployeeId;
+        EmployeeId = uqEmployeeId;
         bShowEditEmployee = true;
     }
 }

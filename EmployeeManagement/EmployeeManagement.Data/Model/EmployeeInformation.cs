@@ -6,7 +6,7 @@ namespace BlazorAppCRUD
 	public class EmployeeInformation
 	{
 		#region Properties
-		public string EmployeeId { get; set; }
+		public Guid EmployeeNumber { get; set; }
 
 		[Required(ErrorMessage = "Name is Required")]
 		[StringLength(40, ErrorMessage = "Name should be less than 40 characters")]
