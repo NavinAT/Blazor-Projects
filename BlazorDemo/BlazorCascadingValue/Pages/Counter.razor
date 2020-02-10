@@ -4,10 +4,14 @@
 
 <hr/>
 <p>Cascading Parameter One: @FirstFruit </p>
+<p>Parameter Value from Parent: @SecondFruit </p>
 
 @code {
 
     [CascadingParameter]
     public string FirstFruit { get; set; }
+
+    [Parameter]
+    public string SecondFruit { get; set; }
 
 }

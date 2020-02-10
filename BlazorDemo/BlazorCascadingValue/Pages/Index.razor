@@ -1,8 +1,9 @@
 ﻿@page "/"
 
-<h5 style="color: skyblue">Single Cascading value passed to multiple same type parameter</h5>
+<h5 style="color: skyblue">Single Cascading value passed to multiple Components</h5>
 <CascadingValue Value="@FirstFruit">
-    <Counter></Counter>
+    <Counter SecondFruit="Mango"></Counter>
+    <FetchData></FetchData>
 </CascadingValue>
 
 @code
@@ -17,7 +18,7 @@
 <h5 style="color: aqua">Multiple Cascading value passed to multiple same type parameter</h5>
 <CascadingValue Value="@FruitOne">
     <CascadingValue Value="@FruitTwo">
-        <CascadingValuePassing2Values></CascadingValuePassing2Values>
+        <Passing2Values></Passing2Values>
     </CascadingValue>
 </CascadingValue>
 
@@ -34,7 +35,7 @@
 <h5 style="color: yellowgreen">Multiple Cascading value passed to multiple same type parameter with Identifier</h5>
 <CascadingValue Value="@First_Fruit" Name="firstfruit">
     <CascadingValue Value="@Second_Fruit" Name="SecondFruit">
-        <CascadingTwoValuesWithIdentifier></CascadingTwoValuesWithIdentifier>
+        <PassingTwoValuesWithIdentifier></PassingTwoValuesWithIdentifier>
     </CascadingValue>
 </CascadingValue>
 

@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorAppCRUD", "..\BlazorAppCRUD\BlazorAppCRUD.csproj", "{8A10EF1B-288A-4DD1-8506-B39C10FBF932}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorAppJavaScriptInterop", "..\BlazorAppJavaScriptInterop\BlazorAppJavaScriptInterop.csproj", "{0783E4D6-A235-4FA7-AB1D-4C03253BBC6A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDependencyInjection", "..\BlazorDependencyInjection\BlazorDependencyInjection.csproj", "{5C9E1F61-9C9A-4E3C-89BB-3578B680A229}"
@@ -18,8 +16,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp.WebAssembly", "..\BlazorApp.WebAssembly\BlazorApp.WebAssembly.csproj", "{93F102FA-A6FC-47BF-ABBC-AA41399984AB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorStateManagement", "BlazorStateManagement\BlazorStateManagement.csproj", "{FBDA70E9-983A-4955-AE5D-015AE68E49E8}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorCURD.Data", "..\Blazor.Data\BlazorCURD.Data.csproj", "{7F85C37C-E9B0-4BD4-8597-3A3C14899CFB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorAppDynamicCompBasedonDataSet", "..\BlazorAppDynamicCompBasedonDataSet\BlazorAppDynamicCompBasedonDataSet.csproj", "{8CE395E3-D5BA-45EC-B3C4-AE69BBDF5A79}"
 EndProject
@@ -35,7 +31,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeployTestAPP", "..\Asp.NET
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLayout", "BlazorApp1\BlazorLayout.csproj", "{B7E7C721-9FFF-4D4C-9BC1-C546DF971FC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorAppPartialSupport", "BlazorAppPartialSupport\BlazorAppPartialSupport.csproj", "{700EAD56-DEDD-4A4C-8346-7FBB713BC8D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorAppPartialSupport", "BlazorAppPartialSupport\BlazorAppPartialSupport.csproj", "{700EAD56-DEDD-4A4C-8346-7FBB713BC8D4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedSampleObjects", "SharedSampleObjects\SharedSampleObjects.csproj", "{FDAFE747-3866-404F-98A1-7946544B7B2E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AfterBlazorServerSide", "AfterBlazorServerSide\AfterBlazorServerSide.csproj", "{4FFD9FA5-00B0-44EB-9CC1-66A6690CB0FD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebFormsComponents", "BlazorWebFormsComponents\BlazorWebFormsComponents.csproj", "{896B9DA8-CE77-4487-BE97-5830CBFC7CDC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebFormsComponents.Test", "BlazorWebFormsComponents.Test\BlazorWebFormsComponents.Test.csproj", "{B9E5470D-6A6F-478D-882D-6216989E845F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,10 +47,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8A10EF1B-288A-4DD1-8506-B39C10FBF932}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8A10EF1B-288A-4DD1-8506-B39C10FBF932}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8A10EF1B-288A-4DD1-8506-B39C10FBF932}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8A10EF1B-288A-4DD1-8506-B39C10FBF932}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0783E4D6-A235-4FA7-AB1D-4C03253BBC6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0783E4D6-A235-4FA7-AB1D-4C03253BBC6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0783E4D6-A235-4FA7-AB1D-4C03253BBC6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -75,10 +75,6 @@ Global
 		{FBDA70E9-983A-4955-AE5D-015AE68E49E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBDA70E9-983A-4955-AE5D-015AE68E49E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBDA70E9-983A-4955-AE5D-015AE68E49E8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7F85C37C-E9B0-4BD4-8597-3A3C14899CFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7F85C37C-E9B0-4BD4-8597-3A3C14899CFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7F85C37C-E9B0-4BD4-8597-3A3C14899CFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7F85C37C-E9B0-4BD4-8597-3A3C14899CFB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8CE395E3-D5BA-45EC-B3C4-AE69BBDF5A79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8CE395E3-D5BA-45EC-B3C4-AE69BBDF5A79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CE395E3-D5BA-45EC-B3C4-AE69BBDF5A79}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -111,6 +107,22 @@ Global
 		{700EAD56-DEDD-4A4C-8346-7FBB713BC8D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{700EAD56-DEDD-4A4C-8346-7FBB713BC8D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{700EAD56-DEDD-4A4C-8346-7FBB713BC8D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDAFE747-3866-404F-98A1-7946544B7B2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDAFE747-3866-404F-98A1-7946544B7B2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDAFE747-3866-404F-98A1-7946544B7B2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDAFE747-3866-404F-98A1-7946544B7B2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FFD9FA5-00B0-44EB-9CC1-66A6690CB0FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FFD9FA5-00B0-44EB-9CC1-66A6690CB0FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FFD9FA5-00B0-44EB-9CC1-66A6690CB0FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FFD9FA5-00B0-44EB-9CC1-66A6690CB0FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{896B9DA8-CE77-4487-BE97-5830CBFC7CDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{896B9DA8-CE77-4487-BE97-5830CBFC7CDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{896B9DA8-CE77-4487-BE97-5830CBFC7CDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{896B9DA8-CE77-4487-BE97-5830CBFC7CDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9E5470D-6A6F-478D-882D-6216989E845F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9E5470D-6A6F-478D-882D-6216989E845F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9E5470D-6A6F-478D-882D-6216989E845F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9E5470D-6A6F-478D-882D-6216989E845F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
