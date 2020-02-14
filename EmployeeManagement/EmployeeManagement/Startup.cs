@@ -34,10 +34,14 @@ namespace BlazorAppCRUD
 
             // Get authentication info
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
-            // 1. Cookie authentication
+            // Cookie authentication
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
-		}
+
+			//Dependency Injection
+			services.AddSingleton<ISingletonService, SingletonService>();
+            services.AddScoped<IScopedService, ScopedService>();
+            services.AddTransient<ITransientService, TransientService>();
+        }
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

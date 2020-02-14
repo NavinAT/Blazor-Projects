@@ -35,6 +35,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Pages\08JavaScriptInterop\" />
+    <Folder Include="Pages\04FormValidation\" />
+    <Folder Include="Pages\10StateManagement\" />
+    <Folder Include="Pages\11ErrorHandling\" />
+    <Folder Include="Pages\07Routing\" />
+    <Folder Include="Pages\01Component\" />
     <Folder Include="wwwroot\Images\" />
   </ItemGroup>
 

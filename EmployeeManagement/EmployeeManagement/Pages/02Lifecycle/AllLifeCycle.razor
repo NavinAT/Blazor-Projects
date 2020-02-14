@@ -1,0 +1,41 @@
+﻿@page "/lifecycle"
+@inject IJSRuntime IJSruntime
+
+@DynamicRenderFragment
+
+@code {
+    private RenderFragment DynamicRenderFragment { get; set; }
+
+    protected override void OnInitialized()
+    {
+        DynamicRenderFragment = renderBuilder =>
+        {
+            renderBuilder.OpenElement(0, "div");
+            renderBuilder.AddAttribute(1, "class", "row");
+            renderBuilder.AddMarkupContent(2, "<h1>Header Created Dynamically</h1>");
+            renderBuilder.CloseElement();
+            renderBuilder.OpenElement(3, "p");
+            renderBuilder.AddAttribute(4, "style", "color: chartreuse; font-weight: bolder");
+            renderBuilder.AddContent(5, "Paragraph created using render tree builder");
+            renderBuilder.CloseElement();
+            renderBuilder.OpenElement(6, "h4");
+            renderBuilder.AddAttribute(7, "id", "myheader");
+            renderBuilder.AddContent(8, "Mouseover the header to change the color of the content");
+            renderBuilder.CloseElement();
+        };
+    }
+
+    protected override void OnParametersSet()
+    {
+        //will be called while setting or updating parameter from other component / called automatically after OnIntialized().  
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            IJSruntime.InvokeVoidAsync("ChangeElementColor");
+        }
+    }
+
+}

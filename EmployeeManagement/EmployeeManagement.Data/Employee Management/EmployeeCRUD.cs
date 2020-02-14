@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using Microsoft.JSInterop;
 
-namespace BlazorAppCRUD
+namespace EmployeeManagement.Data
 {
 	public class EmployeeCRUD
 	{

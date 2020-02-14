@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BlazorAppCRUD;
+﻿using System.Collections.Generic;
+using EmployeeManagement.Data;
 
 namespace EmployeeManagement
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace BlazorAppCRUD
+namespace EmployeeManagement.Data
 {
 	public class EmployeeInformation
 	{
