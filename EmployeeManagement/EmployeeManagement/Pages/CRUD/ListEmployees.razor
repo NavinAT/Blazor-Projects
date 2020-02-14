@@ -33,7 +33,7 @@ else
                 <td>@employee.EmployeeName</td>
                 <td>@employee.Department</td>
                 <td>@employee.Salary</td>
-                <td>@employee.DOB</td>
+                <td>@employee.Dob</td>
                 <td>@employee.City</td>
                 <td>
                     <a style="color: blue; cursor: pointer; font-weight: bold" @onclick="(() => ShowEditRazor(employee.EmployeeNumber))">Edit</a>
@@ -49,7 +49,7 @@ else
 @if(bShowEditEmployee)
 {
     <hr/>
-    <EditEmployee EmployeeNumber="@EmployeeId" IsAllowToDisplay="@bShowEditEmployee"/>
+    <EditEmployee EmployeeNumber="@EmployeeId" IsAllowToDisplay="@bShowEditEmployee" OnUpdate="ClickUpdate"></EditEmployee>
 }
 
 
@@ -62,5 +62,13 @@ else
     {
         EmployeeId = uqEmployeeId;
         bShowEditEmployee = true;
+    }
+
+    void ClickUpdate(EmployeeInformation employee)
+    {
+        EmployeeCRUD.EditEmployee(employee.EmployeeNumber, employee);
+
+        EmployeeDetails.ListEmployee = EmployeeCRUD.FetchEmployees();
+        bShowEditEmployee = false;
     }
 }

@@ -6,69 +6,54 @@ using Microsoft.JSInterop;
 
 namespace EmployeeManagement
 {
-	public class EditEmployeeBase : ComponentBase
-	{
-		#region Fields
-		protected EmployeeInformation employee = new EmployeeInformation();
-		protected List<string> DropDownValues;
-		#endregion
+    public class EditEmployeeBase : ComponentBase
+    {
+        #region Fields
 
-		#region Properties
-		[Parameter]
-		public Guid EmployeeNumber { get; set; }
+        protected EmployeeInformation employee = new EmployeeInformation();
+        protected List<string> DropDownValues;
 
-		[Parameter]
-		public bool IsAllowToDisplay { get; set; }
+        #endregion
 
-		[Inject]
-		public EmployeeDetails EmployeeDetails { get; set; }
+        #region Properties
 
-		[Parameter]
-		public EventCallback OnClick { get; set; }
+        [Parameter] public Guid EmployeeNumber { get; set; }
 
-		[Inject]
-		protected NavigationManager NavigationManager { get; set; }
+        [Parameter] public bool IsAllowToDisplay { get; set; }
 
-		[Inject]
-		protected IJSRuntime JSRuntime { get; set; }
+        [Inject] public EmployeeDetails EmployeeDetails { get; set; }
 
-		private Guid qEmployeeNumber { get; set; }
-		#endregion
+        [Parameter] public EventCallback OnClick { get; set; }
 
-		#region Protecteds
-		protected override void OnInitialized()
-		{
-			employee = EmployeeCRUD.FetchSingleEmployee(this.EmployeeNumber);
+        [Inject] protected NavigationManager NavigationManager { get; set; }
 
-			string strTableName = nameof(employee.City);
-			DropDownValues = EmployeeCRUD.FetchDropDownList(strTableName);
-		}
+        [Inject] protected IJSRuntime JSRuntime { get; set; }
 
-		protected override void OnParametersSet()
-		{
-			this.qEmployeeNumber = this.EmployeeNumber;
-		}
+        private Guid qEmployeeNumber { get; set; }
 
-		protected override async void OnAfterRender(bool firstRender)
-		{
-			await this.JSRuntime.InvokeVoidAsync("addDatePicker");
-		}
+        #endregion
 
-		protected void UpdateEmployee()
-		{
-			EmployeeCRUD.EditEmployee(this.qEmployeeNumber, employee);
+        #region Protecteds
 
-			this.EmployeeDetails.ListEmployee = null;
-			this.IsAllowToDisplay = false;
-			this.NavigationManager.NavigateTo("createemployee");
-			this.NavigationManager.NavigateTo("listemployees");
-		}
+        protected override void OnInitialized()
+        {
+            employee = EmployeeCRUD.FetchSingleEmployee(EmployeeNumber);
 
-		protected void Cancel()
-		{
-			this.NavigationManager.NavigateTo("createemployee");
-			this.NavigationManager.NavigateTo("listemployees");
-		}
-		#endregion
-	}
+            var strTableName = nameof(employee.City);
+            DropDownValues = EmployeeCRUD.FetchDropDownList(strTableName);
+        }
+
+        protected override void OnParametersSet()
+        {
+            qEmployeeNumber = EmployeeNumber;
+        }
+
+        protected void Cancel()
+        {
+            NavigationManager.NavigateTo("createemployee");
+            NavigationManager.NavigateTo("listemployees");
+        }
+
+        #endregion
+    }
 }

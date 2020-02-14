@@ -1,4 +1,5 @@
 ﻿@page "/editemployee/{EmployeeNumber:guid}"
+@using EmployeeManagement.Data
 @inherits EditEmployeeBase
 
 @if(IsAllowToDisplay)
@@ -32,7 +33,7 @@
                     </div>
                     <div class="form-group">
                         <label for="DOB">Date Of Birth</label>
-                        <input id="DOB" class="form-control" placeholder="Enter your DOB" @bind="@employee.DOB" @bind:format="dd/MM/yyyy"/>
+                        <input id="DOB" class="form-control" placeholder="Enter your Dob" @bind="@employee.Dob" @bind:format="dd/MM/yyyy"/>
                     </div>
                     <div class="form-group">
                         <label for="City">City</label>
@@ -49,12 +50,19 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="form-group">
-                        <input type="button" class="btn btn-primary" @onclick="@UpdateEmployee" value="Save"/>
-                        <input type="button" class="btn" @onclick="@Cancel" value="Cancel"/>
+                        @*<input type="button" class="btn btn-primary" @onclick="@UpdateEmployee" value="Save" />*@
+                        <input type="button" class="btn btn-primary" @onclick="@(() => OnUpdate.InvokeAsync(employee))" value="Save" />
+                        <input type="button" class="btn" @onclick="@Cancel" value="Cancel" />
                     </div>
                 </div>
             </div>
         </form>
     }
+}
+
+@code{
+
+    [Parameter] public EventCallback<EmployeeInformation> OnUpdate { get; set; }
+
 }
 
