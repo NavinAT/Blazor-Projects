@@ -12,14 +12,12 @@
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
     <link href="css/site.css" rel="stylesheet" />
     <link href="css/Common.css" rel="stylesheet" />
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="_content/Microsoft.AspNetCore.ProtectedBrowserStorage/protectedBrowserStorage.js"></script>
     <script src="Script/EmployeeManagement.js"></script>
-    <script src="Script/JSInteropexample.js"></script>
+    <script src="Script/JSInterop/JSInteropexample.js"></script>
     <link rel="stylesheet" href="css/RootLayout.css">
+    <link rel="stylesheet" href="css/Page.css">
 </head>
 <body>
     <app>
@@ -27,19 +25,6 @@
     </app>
 
     <script src="_framework/blazor.server.js"></script>
-    <script>
-        window.addDatePicker = () => {
-            $("#DOB").datepicker({
-                dateFormat: 'dd-mm-yy',
-                changeMonth: true,
-                changeYear: true,
-                defaultDate: new Date(2018, 11, 24),
-                onSelect: function () {
-                    var date = $(this).datepicker("getDate");
-                    this.value = date;
-                }
-            });
-        }
-    </script>
+    
 </body>
 </html>

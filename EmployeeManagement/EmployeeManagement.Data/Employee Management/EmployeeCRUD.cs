@@ -19,13 +19,13 @@ namespace EmployeeManagement.Data
 		public static void CreateEmployee(EmployeeInformation employee)
 		{
 			using SqlConnection sqlConnection = new SqlConnection(CONNECTION_STRING);
-			const string strInsertQuery = "insert into Employee(EmployeeId, EmployeeName, Department, salary, DOB, City) values(@EmployeeNumber, @EmployeeName, @Department, @Salary, @DOB, @City)";
+			const string strInsertQuery = "insert into Employee(EmployeeId, EmployeeName, Department, salary, Dob, City) values(@EmployeeNumber, @EmployeeName, @Department, @Salary, @Dob, @City)";
 			sqlCommand = new SqlCommand(strInsertQuery, sqlConnection);
 			sqlCommand.Parameters.AddWithValue("@EmployeeNumber", Guid.NewGuid().ToString());
 			sqlCommand.Parameters.AddWithValue("@EmployeeName", employee.EmployeeName);
 			sqlCommand.Parameters.AddWithValue("@Department", employee.Department);
 			sqlCommand.Parameters.AddWithValue("@Salary", employee.Salary);
-			sqlCommand.Parameters.AddWithValue("@DOB", employee.DOB.Date);
+			sqlCommand.Parameters.AddWithValue("@Dob", employee.Dob.Date);
 			sqlCommand.Parameters.AddWithValue("@City", employee.City);
 
 			OpenAndCloseConnection(sqlConnection, sqlCommand);
@@ -50,7 +50,7 @@ namespace EmployeeManagement.Data
 						EmployeeName = sqlReader["EmployeeName"].ToString(),
 						Department = sqlReader["Department"].ToString(),
 						Salary = Convert.ToInt32(sqlReader["salary"]),
-						DOB = Convert.ToDateTime(sqlReader["DOB"]),
+						Dob = Convert.ToDateTime(sqlReader["Dob"]),
 						City = sqlReader["City"].ToString()
 					};
 					listEmployees.Add(employee);
@@ -82,7 +82,7 @@ namespace EmployeeManagement.Data
 					           EmployeeName = dataReader["EmployeeName"].ToString(),
 					           Department = dataReader["Department"].ToString(),
 					           Salary = Convert.ToInt32(dataReader["salary"]),
-					           DOB = Convert.ToDateTime(dataReader["DOB"]),
+					           Dob = Convert.ToDateTime(dataReader["Dob"]),
 					           City = dataReader["City"].ToString()
 				           };
 			}
@@ -93,14 +93,14 @@ namespace EmployeeManagement.Data
 		public static void EditEmployee(Guid uqEmployeeNumber, EmployeeInformation employee)
 		{
 			using SqlConnection con = new SqlConnection(CONNECTION_STRING);
-			const string strUpdateQuery = "Update Employee set EmployeeName = @EmployeeName, Department = @Department, salary = @salary, DOB = @DOB, City = @City where EmployeeId = @EmployeeNumber";
+			const string strUpdateQuery = "Update Employee set EmployeeName = @EmployeeName, Department = @Department, salary = @salary, Dob = @Dob, City = @City where EmployeeId = @EmployeeNumber";
 
 			sqlCommand = new SqlCommand(strUpdateQuery, con);
 			sqlCommand.Parameters.AddWithValue("@EmployeeNumber", uqEmployeeNumber);
 			sqlCommand.Parameters.AddWithValue("@EmployeeName", employee.EmployeeName);
 			sqlCommand.Parameters.AddWithValue("@Department", employee.Department);
 			sqlCommand.Parameters.AddWithValue("@salary", employee.Salary);
-			sqlCommand.Parameters.AddWithValue("@DOB", employee.DOB);
+			sqlCommand.Parameters.AddWithValue("@Dob", employee.Dob);
 			sqlCommand.Parameters.AddWithValue("@City", employee.City);
 
 			OpenAndCloseConnection(con, sqlCommand);

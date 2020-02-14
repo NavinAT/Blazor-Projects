@@ -11,16 +11,17 @@
         DynamicRenderFragment = renderBuilder =>
         {
             renderBuilder.OpenElement(0, "div");
-            renderBuilder.AddAttribute(1, "class", "row");
-            renderBuilder.AddMarkupContent(2, "<h1>Header Created Dynamically</h1>");
+            renderBuilder.AddAttribute(1, "class", "div-container");
+            renderBuilder.AddMarkupContent(2, "<h3>Header Created Dynamically</h3>");
+            renderBuilder.AddMarkupContent(3,"<hr/>");
+            renderBuilder.OpenElement(4, "p");
+            renderBuilder.AddAttribute(5, "style", "color: chartreuse; font-weight: bolder");
+            renderBuilder.AddContent(6, "Paragraph created using render tree builder");
             renderBuilder.CloseElement();
-            renderBuilder.OpenElement(3, "p");
-            renderBuilder.AddAttribute(4, "style", "color: chartreuse; font-weight: bolder");
-            renderBuilder.AddContent(5, "Paragraph created using render tree builder");
+            renderBuilder.OpenElement(7, "h4");
+            renderBuilder.AddAttribute(8, "id", "myheader");
+            renderBuilder.AddContent(9, "Mouseover the header to change the color of the content");
             renderBuilder.CloseElement();
-            renderBuilder.OpenElement(6, "h4");
-            renderBuilder.AddAttribute(7, "id", "myheader");
-            renderBuilder.AddContent(8, "Mouseover the header to change the color of the content");
             renderBuilder.CloseElement();
         };
     }

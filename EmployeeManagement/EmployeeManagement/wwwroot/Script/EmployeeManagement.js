@@ -25,3 +25,7 @@ function ChangeElementColor() {
         });
 
 }
+
+function ValidationAlert() {
+    alert('Validated successfully');
+}
