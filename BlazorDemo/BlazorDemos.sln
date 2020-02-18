@@ -41,6 +41,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebFormsComponents", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebFormsComponents.Test", "BlazorWebFormsComponents.Test\BlazorWebFormsComponents.Test.csproj", "{B9E5470D-6A6F-478D-882D-6216989E845F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenderTreeProof", "RenderTreeProof\RenderTreeProof.csproj", "{5E3B6358-1C95-4EB0-B3A8-E87B8A8FBE08}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,10 @@ Global
 		{B9E5470D-6A6F-478D-882D-6216989E845F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9E5470D-6A6F-478D-882D-6216989E845F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9E5470D-6A6F-478D-882D-6216989E845F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E3B6358-1C95-4EB0-B3A8-E87B8A8FBE08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E3B6358-1C95-4EB0-B3A8-E87B8A8FBE08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E3B6358-1C95-4EB0-B3A8-E87B8A8FBE08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E3B6358-1C95-4EB0-B3A8-E87B8A8FBE08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
