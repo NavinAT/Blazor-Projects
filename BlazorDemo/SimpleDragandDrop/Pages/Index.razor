@@ -1,0 +1,17 @@
+﻿@page "/"
+
+<h3>Drag and Drop</h3>
+
+<div class="div-container" draggable="true" @ondragleave="@GetItems">
+
+</div>
+
+
+@code
+{
+    static void GetItems(DragEventArgs eventArgs)
+    {
+        var items = eventArgs.DataTransfer.Items;
+        var types= eventArgs.DataTransfer.Types;
+    }
+}

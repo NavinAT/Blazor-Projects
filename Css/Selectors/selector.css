@@ -1,0 +1,24 @@
+/*Descendant selector*/
+ul .Descendant {
+    border: 2px solid turquoise;
+}
+
+/*Descendant selector*/
+li a
+{
+    border-left: 3px darkblue solid;
+    background-color: skyblue;
+}
+
+/*Adjacent Selector*/
+h2 + ul {
+    border: 2px dashed lightgreen;
+}
+
+/*Attribute Selector*/
+input[type="text"]:focus{
+    background-color:yellowgreen;
+}
+li[class="Descendant"]:hover{
+    color:tomato;
+}

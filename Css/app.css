@@ -1,0 +1,27 @@
+h1{
+    color:rgb(243, 247, 59);
+    border-width: 2px;
+    border-style: dashed;
+    border-color: rgb(228, 100, 14);
+}
+li{
+    color: whitesmoke;
+    font-weight: bolder;
+}
+h3{
+    color: #DC143C;
+    background-color: #E6E6FA;
+}
+body {
+    background: url(http://www.allwhitebackground.com/images/5/Creative-Background-HD-Photos.jpg);
+    background-size: cover;
+}
+#adultcontent{
+    background-color: firebrick;
+}
+.mustwatch{
+    background-color:slategray;
+}
+.completed{
+    text-decoration: line-through;
+}                   

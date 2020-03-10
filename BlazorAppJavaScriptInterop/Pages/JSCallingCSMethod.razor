@@ -2,7 +2,7 @@
 @page "/callingcsmethod"
 
 <h3>Invoke C# Method from JS file</h3>
-<button id="AlertButton" type="button" class="btn btn-primary" @onclick="@CallJSMethod">Call C# Method</button>
+<button id="AlertButton" type="button" class="btn btn-primary" @onclick="@InvokeJsMethod">Call C# Method</button>
 <button id="AlertButton" type="button" class="btn btn-primary" @onclick="@IncrementCountJavaScript">Call Instance C# method</button>
 <br />
 <hr />
@@ -17,13 +17,13 @@
 @code {
     public static string Message { get; set; }
     
-    private void CallJSMethod()
+    private void InvokeJsMethod()
     {
         JsRuntime.InvokeVoidAsync("JSMethod");
     }
 
     [JSInvokable]
-    public static void CSCallBackMethod()
+    public static void JsInvokableMethod()
     {
         if(string.IsNullOrEmpty(Message))
             Message = string.Empty;

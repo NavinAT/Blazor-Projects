@@ -1,0 +1,89 @@
+﻿@page "/weeklyForecast"
+@using BlazorWeatherSample.Data
+@inject WeatherForecastService WeatherService
+
+<h3>Weekly Forecast</h3>
+
+<div class="d-flex">
+    @if(forecasts == null)
+    {
+        <span>No data found!!</span>
+    }
+    else
+    {
+        @foreach(WeatherForecast forecast in forecasts)
+        {
+            <WeatherDay TemperatureC="@forecast.TemperatureC"
+                        Summary="@forecast.Summary"
+                        DayOfWeek="@forecast.Date.DayOfWeek"
+                        OnSelected="@HandleItemSelected"
+                        Selected="@forecast.Selected"
+                        DisplayThingsToDo="@forecast.Selected">
+                <CustomMessage>
+                    @if(forecast.Summary == "Rainy")
+                    {
+                        <div class="alert alert-danger">
+                            Tornado Warning!
+                        </div>
+                    }
+                </CustomMessage>
+                <ThingsToDoMessage>
+                    @if(@forecast.Selected)
+                    {
+                        switch(forecast.Summary)
+                        {
+                            case "Rainy":
+                                <div class="alert alert-warning">
+                                    <ul>
+                                        <li>Take umberla</li>
+                                        <li>Wear Rain coat</li>
+                                    </ul>
+                                </div>
+                                break;
+                            case "Cloudy":
+                                <div class="alert alert-warning">
+                                    <ul>
+                                        <li>Just Enjoy the Climate</li>
+                                    </ul>
+                                </div>
+                                break;
+                            case "Sunny":
+                                <div class="alert alert-warning">
+                                    <ul>
+                                        <li>Wear Sun Glass</li>
+                                        <li>Wear cotton clothes</li>
+                                        <li>Drink more Water</li>
+                                    </ul>
+                                </div>
+                                break;
+                        }
+                    }
+                </ThingsToDoMessage>
+
+            </WeatherDay>
+        }
+    }
+</div>
+
+@code {
+
+    WeatherForecast[] forecasts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await WeatherForecastService.GetForecastAsync(DateTime.Now);
+    }
+
+    void HandleItemSelected(DayOfWeek selectedValueDayOfWeek)
+    {
+
+        foreach (WeatherForecast weatherForecast in forecasts)
+
+            weatherForecast.Selected = false;
+
+        forecasts.First(forecast => forecast.Date.DayOfWeek == selectedValueDayOfWeek).Selected = true;
+
+    }
+
+}
+
